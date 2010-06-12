@@ -1,0 +1,25 @@
+<div id="playermap">
+<h1><{$smarty.const._MD_PLAYERMAP_LANG_LOG}><{$smarty.const._LIST}></h1>
+<ul class="toptab">
+  <li><a href="<{xoops_cooluri dirname=$dirname dataname=$dataname action=edit}>"><{$smarty.const._MD_PLAYERMAP_LANG_ADD_A_NEW_LOG}></a></li>
+</ul>
+
+<{if count($objects) > 0}>
+  <div class="pagenavi"><{xoops_pagenavi pagenavi=$pageNavi}></div>
+	<{foreach item=obj from=$objects}>
+	<dl class="widelist">
+  	<dd class="avatar"></dd>
+  	<dt><{$obj->getShowTime()|xoops_formattimestamp:s}> <a href="<{xoops_cooluri dirname=$dirname dataname=$dataname data_id=$obj->get('log_id')}>"><{$obj->getShow('title')}></a></dt>
+  	<dd class="subInfo">
+		<ul>
+		<li><a href="<{$obj->getPlace('uri')}>"><{$obj->getPlace('title')}></a></li>
+		<li><{$obj->getShow('recruit')}></li>
+	  <{if $obj->getShow('url')}><li><a href="<{$obj->getShow('url')}>">HP</a></li><{/if}>
+		</ul>
+		</dd>
+  	<dd class="description"><{$obj->get('description')|strip_tags|mb_substr:0:100}></dd>
+	</dl>
+	<{/foreach}>
+  <div class="pagenavi"><{xoops_pagenavi pagenavi=$pageNavi}></div>
+<{/if}>
+</div>

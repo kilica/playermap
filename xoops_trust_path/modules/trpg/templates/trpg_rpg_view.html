@@ -1,0 +1,56 @@
+<div id="trpg">
+<h1><{$object->getShow('title')}></h1>
+
+<ul class="subInfo">
+  <{if $Pub_idTitle}><li><{$Pub_idTitle}></li><{/if}>
+  <li><span title="<{$smarty.const._MD_TRPG_LANG_ABBR}>"><{$object->getShow('abbr')}></span></li>
+</ul>
+
+<{playermap_iseditor dataname="rpg" data_id=$object->getShow('rpg_id')}>
+
+<div id="tab" class="tab">
+	<ul>
+		<li><a href="#desc"><{$smarty.const._MD_TRPG_LANG_DESCRIPTION}></a></li>
+		<li><a href="#book"><{$smarty.const._MD_TRPG_LANG_BOOK}> (<{$object->countChild('book')}>)</a></li>
+		<li><a href="#favrpg"><{$smarty.const._MD_PLAYERMAP_LANG_FAVRPG}> (<{$object->countChild('favrpg')}>)</a></li>
+		<li><a href="#log"><{$smarty.const._MD_PLAYERMAP_LANG_LOG}> (<{$object->countChild('log')}>)</a></li>
+		<li><a href="#link"><{$smarty.const._MD_RPGLINK_LANG_LINK}> (<{$object->countChild('lrpg')}>)</a></li>
+	</ul>
+
+	<div id="desc">
+		<dl class="viewDetail">
+		  <dt><{$smarty.const._MD_TRPG_LANG_RPG_ID}></dt>
+		  <dd><{$object->getShow('rpg_id')}></dd>
+		  <dt><{$smarty.const._MD_TRPG_LANG_URL}></dt>
+		  <dd><{$object->getShow('url')}></dd>
+		  <dt><{$smarty.const._MD_TRPG_LANG_DESCRIPTION}></dt>
+		  <dd><{$object->get('description')}></dd>
+		</dl>
+	</div>
+	<div class="clear"></div>
+
+	<div id="book">
+		<{playermap_iseditor dataname="rpg" data_id=$object->getShow('rpg_id') childname="book"}>
+		<{playermap_list dirname=$object->getDirname() dataname=rpg data_id=$object->get('rpg_id') childname=book template=widelist}>
+	</div><!-- id:book -->
+
+	<div id="favrpg">
+		<{playermap_iseditor dataname="rpg" data_id=$object->getShow('rpg_id') childname="favrpg"}>
+		<{if $xoops_isuser}>
+		<{$xoops_userid|xoops_user:user_name}> <{$smarty.const._MD_PLAYERMAP_LANG_YOUR_RATING}> : <div class="fav-rater" id="rpg-<{$object->getShow('rpg_id')}>"><{playermap_input class=rating name=rating value=$myrating}></div>
+		<{/if}>
+
+		<{playermap_list dirname=$object->getDirname() dataname=rpg data_id=$object->get('rpg_id') childname=favrpg template=widelist}>
+	</div><!-- id:favrpg -->
+
+	<div id="log">
+		<{playermap_iseditor dataname="rpg" data_id=$object->getShow('rpg_id') childname="log"}>
+		<{playermap_list dirname=$object->getDirname() dataname=rpg data_id=$object->get('rpg_id') childname=log template=widelist}>
+	</div><!-- id:log -->
+
+	<div id="link">
+	<{playermap_list dirname=$object->getDirname() dataname=rpg data_id=$object->get('rpg_id') childname=lrpg template=widelist}>
+	</div><!-- id:link -->
+</div>
+
+</div>

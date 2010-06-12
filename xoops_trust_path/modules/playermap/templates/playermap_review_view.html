@@ -1,0 +1,21 @@
+<div id="playermap">
+<h1><{$smarty.const._VIEW}></h1>
+
+<{playermap_iseditor dataname="review" data_id=$object->getShow('review_id')}>
+
+<div class="fav-rater" id="rpg-<{$object->getShow('book_id')}>"><{playermap_input class=rating name=rating value=$object->get('rating')}></div>
+
+<dl class="viewDetail">
+  <dt><{$smarty.const._MD_PLAYERMAP_LANG_REVIEW_ID}></dt>
+  <dd><{$object->getShow('review_id')}></dd>
+  <dt><{$smarty.const._MD_PLAYERMAP_LANG_UID}></dt>
+  <dd><{$object->getShow('uid')|xoops_user:user_name}></dd>
+  <dt><{$smarty.const._MD_PLAYERMAP_LANG_OWNER}></dt>
+  <dd><{$object->getShow('owner')}></dd>
+  <dt><{$smarty.const._MD_PLAYERMAP_LANG_DESCRIPTION}></dt>
+  <dd><{$object->getShow('description')}></dd>
+  <dt><{$smarty.const._MD_PLAYERMAP_LANG_POSTTIME}></dt>
+  <dd><{$object->getShow('posttime')|xoops_formattimestamp:m}></dd>
+
+</dl>
+</div>

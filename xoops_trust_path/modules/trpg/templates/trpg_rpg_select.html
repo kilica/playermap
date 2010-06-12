@@ -1,0 +1,16 @@
+<div id="trpg">
+<h1><{$smarty.const._MD_TRPG_LANG_RPG}><{$smarty.const._LIST}></h1>
+
+<{if count($objects) > 0}>
+  <div class="pagenavi"><{xoops_pagenavi pagenavi=$pageNavi}></div>
+    <{foreach item=obj from=$objects}>
+    <dl>
+	  	<dt><a href="<{xoops_cooluri dirname=$dirname dataname=$dataname data_id=$obj->get('rpg_id')}>"><{$obj->getShow('title')}></a></dt>
+			<{if $xoops_isuser}>
+			<dd><div class="fav-rater" id="rpg-<{$obj->getShow('rpg_id')}>"><{playermap_input class=rating name=rating value=$obj->getMyRating()}></div></dd>
+			<{/if}>
+  	</dl>
+    <{/foreach}>
+  <div class="pagenavi"><{xoops_pagenavi pagenavi=$pageNavi}></div>
+<{/if}>
+</div>

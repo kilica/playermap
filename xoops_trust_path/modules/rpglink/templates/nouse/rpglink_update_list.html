@@ -1,0 +1,67 @@
+<div id="rpglink">
+<h1><{$smarty.const._LIST}></h1>
+<ul class="toptab">
+  <li><a href="<{xoops_cooluri dirname=$dirname dataname=$dataname action=edit}>"><{$smarty.const._MD_RPGLINK_LANG_ADD_A_NEW_UPDATE}></a></li>
+</ul>
+
+<{if count($objects) > 0}>
+  <div class="pagenavi"><{xoops_pagenavi pagenavi=$pageNavi}></div>
+  <table class="outer" summary="">
+    <thead>
+      <tr>
+		<th>
+		  <{$smarty.const._MD_RPGLINK_LANG_UPDATE_ID}>
+		  <a href="<{$pageNavi->renderUrlForSort()}>&amp;<{$pageNavi->getPrefix()}>sort=<{$smarty.const.RPGLINK_UPDATE_ID_SORT_KEY_UPDATE_ID}>"><img src="images/up.gif" alt="<{$smarty.const._ASCENDING}>" title="<{$smarty.const._ASCENDING}>" /></a>
+		  <a href="<{$pageNavi->renderUrlForSort()}>&amp;<{$pageNavi->getPrefix()}>sort=-<{$smarty.const.RPGLINK_UPDATE_ID_SORT_KEY_UPDATE_ID}>"><img src="images/down.gif" alt="<{$smarty.const._DESCENDING}>" title="<{$smarty.const._DESCENDING}>" /></a>
+		</th>
+		<th>
+		  <{$smarty.const._MD_RPGLINK_LANG_TITLE}>
+		  <a href="<{$pageNavi->renderUrlForSort()}>&amp;<{$pageNavi->getPrefix()}>sort=<{$smarty.const.RPGLINK_TITLE_SORT_KEY_TITLE}>"><img src="images/up.gif" alt="<{$smarty.const._ASCENDING}>" title="<{$smarty.const._ASCENDING}>" /></a>
+		  <a href="<{$pageNavi->renderUrlForSort()}>&amp;<{$pageNavi->getPrefix()}>sort=-<{$smarty.const.RPGLINK_TITLE_SORT_KEY_TITLE}>"><img src="images/down.gif" alt="<{$smarty.const._DESCENDING}>" title="<{$smarty.const._DESCENDING}>" /></a>
+		</th>
+		<th>
+		  <{$smarty.const._MD_RPGLINK_LANG_LINK_ID}>
+		  <a href="<{$pageNavi->renderUrlForSort()}>&amp;<{$pageNavi->getPrefix()}>sort=<{$smarty.const.RPGLINK_LINK_ID_SORT_KEY_LINK_ID}>"><img src="images/up.gif" alt="<{$smarty.const._ASCENDING}>" title="<{$smarty.const._ASCENDING}>" /></a>
+		  <a href="<{$pageNavi->renderUrlForSort()}>&amp;<{$pageNavi->getPrefix()}>sort=-<{$smarty.const.RPGLINK_LINK_ID_SORT_KEY_LINK_ID}>"><img src="images/down.gif" alt="<{$smarty.const._DESCENDING}>" title="<{$smarty.const._DESCENDING}>" /></a>
+		</th>
+		<th>
+		  <{$smarty.const._MD_RPGLINK_LANG_URL}>
+		  <a href="<{$pageNavi->renderUrlForSort()}>&amp;<{$pageNavi->getPrefix()}>sort=<{$smarty.const.RPGLINK_URL_SORT_KEY_URL}>"><img src="images/up.gif" alt="<{$smarty.const._ASCENDING}>" title="<{$smarty.const._ASCENDING}>" /></a>
+		  <a href="<{$pageNavi->renderUrlForSort()}>&amp;<{$pageNavi->getPrefix()}>sort=-<{$smarty.const.RPGLINK_URL_SORT_KEY_URL}>"><img src="images/down.gif" alt="<{$smarty.const._DESCENDING}>" title="<{$smarty.const._DESCENDING}>" /></a>
+		</th>
+		<th>
+		  <{$smarty.const._MD_RPGLINK_LANG_UPDATE_TIME}>
+		  <a href="<{$pageNavi->renderUrlForSort()}>&amp;<{$pageNavi->getPrefix()}>sort=<{$smarty.const.RPGLINK_UPDATE_TIME_SORT_KEY_UPDATE_TIME}>"><img src="images/up.gif" alt="<{$smarty.const._ASCENDING}>" title="<{$smarty.const._ASCENDING}>" /></a>
+		  <a href="<{$pageNavi->renderUrlForSort()}>&amp;<{$pageNavi->getPrefix()}>sort=-<{$smarty.const.RPGLINK_UPDATE_TIME_SORT_KEY_UPDATE_TIME}>"><img src="images/down.gif" alt="<{$smarty.const._DESCENDING}>" title="<{$smarty.const._DESCENDING}>" /></a>
+		</th>
+		<th>
+		  <{$smarty.const._MD_RPGLINK_LANG_POSTTIME}>
+		  <a href="<{$pageNavi->renderUrlForSort()}>&amp;<{$pageNavi->getPrefix()}>sort=<{$smarty.const.RPGLINK_POSTTIME_SORT_KEY_POSTTIME}>"><img src="images/up.gif" alt="<{$smarty.const._ASCENDING}>" title="<{$smarty.const._ASCENDING}>" /></a>
+		  <a href="<{$pageNavi->renderUrlForSort()}>&amp;<{$pageNavi->getPrefix()}>sort=-<{$smarty.const.RPGLINK_POSTTIME_SORT_KEY_POSTTIME}>"><img src="images/down.gif" alt="<{$smarty.const._DESCENDING}>" title="<{$smarty.const._DESCENDING}>" /></a>
+		</th>
+
+        <th><{$smarty.const._MD_RPGLINK_LANG_CONTROL}></th>
+      </tr>
+    </thead>
+    <tbody>
+      <{foreach item=obj from=$objects}>
+        <tr class="<{cycle values='odd,even'}>">
+		   <td><{$obj->getShow('update_id')}></td>
+		   <td><{$obj->getShow('title')}></td>
+		   <td><{$obj->getShow('link_id')}></td>
+		   <td><{$obj->getShow('url')}></td>
+		   <td><{$obj->getShow('update_time')|xoops_formattimestamp:m}></td>
+		   <td><{$obj->getShow('posttime')|xoops_formattimestamp:m}></td>
+
+          <td>
+            <a href="<{xoops_cooluri dirname=$dirname dataname=$dataname data_id=$obj->getShow('update_id') action=view}>"><{$smarty.const._VIEW}></a>
+            <a href="<{xoops_cooluri dirname=$dirname dataname=$dataname data_id=$obj->getShow('update_id') action=edit}>"><{$smarty.const._EDIT}></a>
+            <a href="<{xoops_cooluri dirname=$dirname dataname=$dataname data_id=$obj->getShow('update_id') action=delete}>"><{$smarty.const._DELETE}></a>
+          </td>
+        </tr>
+      <{/foreach}>
+    </tbody>
+  </table>
+  <div class="pagenavi"><{xoops_pagenavi pagenavi=$pageNavi}></div>
+<{/if}>
+</div>

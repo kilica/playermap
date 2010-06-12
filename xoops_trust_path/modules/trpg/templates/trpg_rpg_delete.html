@@ -1,0 +1,33 @@
+<div id="trpg">
+<h1><{$smarty.const._MD_TRPG_LANG_RPG_DELETE}></h1>
+
+<div class="confirm"><{$smarty.const._MD_TRPG_MESSAGE_CONFIRM_DELETE}></div>
+
+<form action="./index.php?action=RpgDelete" method="post">
+  <dl>
+  <dt><{$smarty.const._MD_TRPG_LANG_RPG_ID}></dt>
+  <dd><{$object->getShow('rpg_id')}></dd>
+  <dt><{$smarty.const._MD_TRPG_LANG_TITLE}></dt>
+  <dd><{$object->getShow('title')}></dd>
+  <dt><{$smarty.const._MD_TRPG_LANG_KANA}></dt>
+  <dd><{$object->getShow('kana')}></dd>
+  <dt><{$smarty.const._MD_TRPG_LANG_ABBR}></dt>
+  <dd><{$object->getShow('abbr')}></dd>
+  <dt><{$smarty.const._MD_TRPG_LANG_PUB_ID}></dt>
+  <dd><{$catTitlepub_id}></dd>
+  <dt><{$smarty.const._MD_TRPG_LANG_URL}></dt>
+  <dd><{$object->getShow('url')}></dd>
+  <dt><{$smarty.const._MD_TRPG_LANG_DESCRIPTION}></dt>
+  <dd><{$object->getShow('description')}></dd>
+  <dt><{$smarty.const._MD_TRPG_LANG_POSTTIME}></dt>
+  <dd><{$object->getShow('posttime')|xoops_formattimestamp:m}></dd>
+
+    <dd>
+      <{xoops_token form=$actionForm}>
+      <{xoops_input type=hidden name=rpg_id value=$actionForm->get('rpg_id')}>
+      <input type="submit" class="formButton" value="<{$smarty.const._DELETE}>"/>
+      <input type="submit" class="formButton" value="<{$smarty.const._CANCEL}>" name="_form_control_cancel"/>
+    </dd>
+  </dl>
+</form>
+</div>

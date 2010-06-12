@@ -1,0 +1,33 @@
+<div id="playermap">
+<h1><{$smarty.const._MD_PLAYERMAP_LANG_LOG_DELETE}></h1>
+
+<div class="confirm"><{$smarty.const._MD_PLAYERMAP_MESSAGE_CONFIRM_DELETE}></div>
+
+<form action="./index.php?action=LogDelete" method="post">
+  <dl>
+  <dt><{$smarty.const._MD_PLAYERMAP_LANG_LOG_ID}></dt>
+  <dd><{$object->getShow('log_id')}></dd>
+  <dt><{$smarty.const._MD_PLAYERMAP_LANG_TITLE}></dt>
+  <dd><{$object->getShow('title')}></dd>
+  <dt><{$smarty.const._MD_PLAYERMAP_LANG_UID}></dt>
+  <dd><{$object->getShow('uid')|xoops_user:user_name}></dd>
+  <dt><{$smarty.const._MD_PLAYERMAP_LANG_SESSIONTIME}></dt>
+  <dd><{$object->getShow('sessiontime')|xoops_formattimestamp:m}></dd>
+  <dt><{$smarty.const._MD_PLAYERMAP_LANG_SCHEDULETIME}></dt>
+  <dd><{$object->getShow('scheduletime')|xoops_formattimestamp:m}></dd>
+  <dt><{$smarty.const._MD_PLAYERMAP_LANG_URL}></dt>
+  <dd><{$object->getShow('url')}></dd>
+  <dt><{$smarty.const._MD_PLAYERMAP_LANG_DESCRIPTION}></dt>
+  <dd><{$object->getShow('description')}></dd>
+  <dt><{$smarty.const._MD_PLAYERMAP_LANG_POSTTIME}></dt>
+  <dd><{$object->getShow('posttime')|xoops_formattimestamp:m}></dd>
+
+    <dd>
+      <{xoops_token form=$actionForm}>
+      <{xoops_input type=hidden name=log_id value=$actionForm->get('log_id')}>
+      <input type="submit" class="formButton" value="<{$smarty.const._DELETE}>"/>
+      <input type="submit" class="formButton" value="<{$smarty.const._CANCEL}>" name="_form_control_cancel"/>
+    </dd>
+  </dl>
+</form>
+</div>

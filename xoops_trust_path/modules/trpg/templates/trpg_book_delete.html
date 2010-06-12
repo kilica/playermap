@@ -1,0 +1,37 @@
+<div id="trpg">
+<h1><{$smarty.const._MD_TRPG_LANG_BOOK_DELETE}></h1>
+
+<div class="confirm"><{$smarty.const._MD_TRPG_MESSAGE_CONFIRM_DELETE}></div>
+
+<form action="./index.php?action=BookDelete" method="post">
+  <dl>
+  <dt><{$smarty.const._MD_TRPG_LANG_BOOK_ID}></dt>
+  <dd><{$object->getShow('book_id')}></dd>
+  <dt><{$smarty.const._MD_TRPG_LANG_TITLE}></dt>
+  <dd><{$object->getShow('title')}></dd>
+  <dt><{$smarty.const._MD_TRPG_LANG_VERSION}></dt>
+  <dd><{$object->getShow('version')}></dd>
+  <dt><{$smarty.const._MD_TRPG_LANG_PUB_ID}></dt>
+  <dd><{$catTitlepub_id}></dd>
+  <dt><{$smarty.const._MD_TRPG_LANG_ISBN}></dt>
+  <dd><{$object->getShow('isbn')}></dd>
+  <dt><{$smarty.const._MD_TRPG_LANG_ISBN13}></dt>
+  <dd><{$object->getShow('isbn13')}></dd>
+  <dt><{$smarty.const._MD_TRPG_LANG_PRICE}></dt>
+  <dd><{$object->getShow('price')}></dd>
+  <dt><{$smarty.const._MD_TRPG_LANG_URL}></dt>
+  <dd><{$object->getShow('url')}></dd>
+  <dt><{$smarty.const._MD_TRPG_LANG_DESCRIPTION}></dt>
+  <dd><{$object->getShow('description')}></dd>
+  <dt><{$smarty.const._MD_TRPG_LANG_POSTTIME}></dt>
+  <dd><{$object->getShow('posttime')|xoops_formattimestamp:m}></dd>
+
+    <dd>
+      <{xoops_token form=$actionForm}>
+      <{xoops_input type=hidden name=book_id value=$actionForm->get('book_id')}>
+      <input type="submit" class="formButton" value="<{$smarty.const._DELETE}>"/>
+      <input type="submit" class="formButton" value="<{$smarty.const._CANCEL}>" name="_form_control_cancel"/>
+    </dd>
+  </dl>
+</form>
+</div>

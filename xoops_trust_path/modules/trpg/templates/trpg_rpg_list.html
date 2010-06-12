@@ -1,0 +1,32 @@
+<div id="trpg">
+<h1><{$smarty.const._MD_TRPG_LANG_RPG}><{$smarty.const._LIST}></h1>
+<ul class="toptab">
+  <li><a href="<{xoops_cooluri dirname=$dirname dataname=$dataname action=edit}>"><{$smarty.const._MD_TRPG_LANG_ADD_A_NEW_RPG}></a></li>
+</ul>
+
+<input type="text" id="incsearch" />
+<ul id="searchList"></ul>
+
+<{if count($objects) > 0}>
+  <div class="pagenavi"><{xoops_pagenavi pagenavi=$pageNavi}></div>
+    <{foreach item=obj from=$objects}>
+    <dl class="widelist">
+	  	<dt><a href="<{xoops_cooluri dirname=$dirname dataname=$dataname data_id=$obj->get('rpg_id')}>"><{$obj->getShow('title')}></a></dt>
+	  	<dd class="avatar">
+	  		<{playermap_image obj=$obj tsize=1 link=source}>
+	  	</dd>
+	  	<dd class="subInfo">
+	  	<ul>
+		    <li><a href="<{$obj->getShow('url')}></a>">HP</a></li>
+		    <li><{assign var=catId value=$obj->getShow('pub_id')}><{$Pub_idTitleList.$catId}></li>
+				<{if $xoops_isuser}>
+				<li><div class="fav-rater" id="rpg-<{$obj->getShow('rpg_id')}>"><{playermap_input class=rating name=rating value=$obj->getMyRating()}></div></li>
+				<{/if}>
+		  </ul>
+		  </dd>
+	  	<dd class="description"><{$obj->get('description')|strip_tags|mb_substr:0:100}></dd>
+  	</dl>
+    <{/foreach}>
+  <div class="pagenavi"><{xoops_pagenavi pagenavi=$pageNavi}></div>
+<{/if}>
+</div>

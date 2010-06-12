@@ -1,0 +1,37 @@
+<div id="playermap" class="list">
+<h1 class="player"><{$smarty.const._MD_PLAYERMAP_LANG_PLAYER}><{$smarty.const._LIST}></h1>
+<ul class="toptab">
+  <li><a href="<{xoops_cooluri dirname=$dirname dataname=$dataname action=edit}>"><{$smarty.const._MD_PLAYERMAP_LANG_ADD_A_NEW_PLAYER}></a></li>
+</ul>
+
+<input type="text" id="incsearch" />
+<ul id="searchList"></ul>
+
+<{if count($objects) > 0}>
+  <div class="pagenavi"><{xoops_pagenavi pagenavi=$pageNavi}></div>
+    <{foreach item=obj from=$objects}>
+      <dl class="widelist">
+		  	<dd class="avatar"></dd>
+		    <dt><a href="<{xoops_cooluri dirname=$dirname dataname=$dataname data_id=$obj->getShow('uid') action=view}>"><{$obj->getShow('name')}></a></dt>
+		    <dd class="subInfo">
+			    <ul>
+			    <li><{assign var=catId value=$obj->getShow('pref_id')}><{$Pref_idTitleList.$catId}></li>
+			    <li><{$obj->getShow('role')|playermap_show:Pmenum_Role}></li>
+			    <li class="offtime-<{$obj->getShow('sun')}>"><{$smarty.const._MD_PLAYERMAP_LANG_SUN}></li>
+			    <li class="offtime-<{$obj->getShow('mon')}>"><{$smarty.const._MD_PLAYERMAP_LANG_MON}></li>
+			    <li class="offtime-<{$obj->getShow('tue')}>"><{$smarty.const._MD_PLAYERMAP_LANG_TUE}></li>
+			    <li class="offtime-<{$obj->getShow('wed')}>"><{$smarty.const._MD_PLAYERMAP_LANG_WED}></li>
+			    <li class="offtime-<{$obj->getShow('thu')}>"><{$smarty.const._MD_PLAYERMAP_LANG_THU}></li>
+			    <li class="offtime-<{$obj->getShow('fri')}>"><{$smarty.const._MD_PLAYERMAP_LANG_FRI}></li>
+			    <li class="offtime-<{$obj->getShow('sat')}>"><{$smarty.const._MD_PLAYERMAP_LANG_SAT}></li>
+			    <li class="offtime-<{$obj->getShow('hol')}>"><{$smarty.const._MD_PLAYERMAP_LANG_HOL}></li>
+			    <li class="offtime-<{$obj->getShow('pbn')}>"><{$smarty.const._MD_PLAYERMAP_LANG_PBN}></li>
+			    </ul>
+		    </dd>
+		  	<dd class="description"><{$obj->get('description')|strip_tags|mb_substr:0:100}></dd>
+      </dl>
+      <div class="clear"></div>
+    <{/foreach}>
+  <div class="pagenavi"><{xoops_pagenavi pagenavi=$pageNavi}></div>
+<{/if}>
+</div>

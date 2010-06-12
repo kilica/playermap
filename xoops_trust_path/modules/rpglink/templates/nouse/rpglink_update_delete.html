@@ -1,0 +1,29 @@
+<div id="rpglink">
+<h1><{$smarty.const._MD_RPGLINK_LANG_UPDATE_DELETE}></h1>
+
+<div class="confirm"><{$smarty.const._MD_RPGLINK_MESSAGE_CONFIRM_DELETE}></div>
+
+<form action="./index.php?action=UpdateDelete" method="post">
+  <dl>
+  <dt><{$smarty.const._MD_RPGLINK_LANG_UPDATE_ID}></dt>
+  <dd><{$object->getShow('update_id')}></dd>
+  <dt><{$smarty.const._MD_RPGLINK_LANG_TITLE}></dt>
+  <dd><{$object->getShow('title')}></dd>
+  <dt><{$smarty.const._MD_RPGLINK_LANG_URL}></dt>
+  <dd><{$object->getShow('url')}></dd>
+  <dt><{$smarty.const._MD_RPGLINK_LANG_UPDATE_TIME}></dt>
+  <dd><{$object->getShow('update_time')|xoops_formattimestamp:m}></dd>
+  <dt><{$smarty.const._MD_RPGLINK_LANG_DESCRIPTION}></dt>
+  <dd><{$object->getShow('description')}></dd>
+  <dt><{$smarty.const._MD_RPGLINK_LANG_POSTTIME}></dt>
+  <dd><{$object->getShow('posttime')|xoops_formattimestamp:m}></dd>
+
+    <dd>
+      <{xoops_token form=$actionForm}>
+      <{xoops_input type=hidden name=update_id value=$actionForm->get('update_id')}>
+      <input type="submit" class="formButton" value="<{$smarty.const._DELETE}>"/>
+      <input type="submit" class="formButton" value="<{$smarty.const._CANCEL}>" name="_form_control_cancel"/>
+    </dd>
+  </dl>
+</form>
+</div>

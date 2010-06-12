@@ -1,0 +1,68 @@
+<div id="trpg">
+<h1><{$smarty.const._MD_TRPG_LANG_BOOK_EDIT}></h1>
+<{if $actionForm->hasError()}>
+  <ul class="error">
+    <{foreach item=message from=$actionForm->getErrorMessages()}>
+      <li><{$message|xoops_escape}></li>
+    <{/foreach}>
+  </ul>
+<{/if}>
+<form action="<{xoops_cooluri dirname=$dirname dataname=book action=edit}>" method="post" enctype="multipart/form-data">
+  <dl>
+
+  <{xoops_input type=hidden name=BOOK_ID value=$actionForm->get('book_id')}>
+
+  <dt class="required"><{$smarty.const._MD_TRPG_LANG_SYSTEM_TITLE}></dt>
+  <dd><{$object->mRpg->getShow('title')}></dd>
+
+  <dt class="required"><{$smarty.const._MD_TRPG_LANG_TITLE}></dt>
+  <dd><{xoops_input type=text name=title value=$actionForm->get('title') size=20 maxlength=255 class="required"}></dd>
+
+  <dt><{$smarty.const._MD_TRPG_LANG_VERSION}></dt>
+  <dd><{xoops_input type=text name=version value=$actionForm->get('version') size=20 maxlength=60}></dd>
+
+  <dt><{$smarty.const._MD_TRPG_LANG_BTYPE}></dt>
+  <dd><{playermap_input class=btype name=btype value=$actionForm->get('btype')}></dd>
+  <dt><{$smarty.const._MD_TRPG_LANG_PUB_ID}></dt>
+  <dd><select name="pub_id">
+	<{legacy_category_select tree=$Pub_idTree selectedValue=$actionForm->get('pub_id')}>
+  </select></dd>
+
+  <dt><{$smarty.const._MD_TRPG_LANG_ISBN}></dt>
+  <dd><{xoops_input type=text name=isbn value=$actionForm->get('isbn') size=20 maxlength=15}></dd>
+
+  <dt><{$smarty.const._MD_TRPG_LANG_ISBN13}></dt>
+  <dd><{xoops_input type=text name=isbn13 value=$actionForm->get('isbn13') size=20 maxlength=15}></dd>
+
+  <dt><{$smarty.const._MD_TRPG_LANG_PUBYEAR}></dt>
+  <dd><{xoops_input type=text name=pubyear value=$actionForm->get('pubyear') size=10}></dd>
+  <dt><{$smarty.const._MD_TRPG_LANG_PRICE}></dt>
+  <dd><{xoops_input type=text name=price value=$actionForm->get('price') size=10}></dd>
+
+  <dt><{$smarty.const._MD_TRPG_LANG_CURRENCY}></dt>
+  <dd><{playermap_input class=currency name=currency value=$actionForm->get('currency')}></dd>
+
+  <dt><{$smarty.const._MD_TRPG_LANG_URL}></dt>
+  <dd><{xoops_input type=text name=url value=$actionForm->get('url') size=20 maxlength=255}></dd>
+  <dt><{$smarty.const._MD_TRPG_LANG_DESCRIPTION}></dt>
+  <dd><{xoops_dhtmltarea type=text name=description value=$actionForm->get('description') editor=html}></dd>
+  <dt><{$smarty.const._MD_TRPG_LANG_IMAGE}></dt>
+  <dd>
+  	<{if $image}>
+  	<img src="<{$image->getFileUrl(1)}>" alt="<{$image->getShow('title')}>" />
+  	<img src="<{$image->getFileUrl(2)}>" alt="<{$image->getShow('title')}>" />
+  	<{/if}>
+  	<{xoops_input type=file name=image1 size=30}>
+  </dd>
+
+    <dt></dt>
+    <dd>
+      <{xoops_token form=$actionForm}>
+      <{xoops_input type=hidden name=book_id value=$actionForm->get('book_id')}>      <{xoops_input type=hidden name=rpg_id value=$actionForm->get('rpg_id')}>
+
+      <input type="submit" value="<{$smarty.const._SUBMIT}>" />
+      <input type="submit" value="<{$smarty.const._CANCEL}>" name="_form_control_cancel" />
+    </dd>
+  </dl>
+</form>
+</div>

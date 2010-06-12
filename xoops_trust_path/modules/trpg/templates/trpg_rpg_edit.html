@@ -1,0 +1,49 @@
+<div id="trpg">
+<h1><{$smarty.const._MD_TRPG_LANG_RPG_EDIT}></h1>
+<{if $actionForm->hasError()}>
+  <ul class="error">
+    <{foreach item=message from=$actionForm->getErrorMessages()}>
+      <li><{$message|xoops_escape}></li>
+    <{/foreach}>
+  </ul>
+<{/if}>
+<form action="<{xoops_cooluri dirname=$dirname dataname=rpg action=edit}>" method="post" enctype="multipart/form-data">
+  <dl>
+
+  <{xoops_input type=hidden name=RPG_ID value=$actionForm->get('rpg_id')}>
+
+  <dt class="required"><{$smarty.const._MD_TRPG_LANG_TITLE}></dt>
+  <dd><{xoops_input type=text name=title value=$actionForm->get('title') size=20 maxlength=255 class="required"}></dd>
+
+  <dt><{$smarty.const._MD_TRPG_LANG_KANA}></dt>
+  <dd><{xoops_input type=text name=kana value=$actionForm->get('kana') size=20 maxlength=128}></dd>
+
+  <dt><{$smarty.const._MD_TRPG_LANG_ABBR}></dt>
+  <dd><{xoops_input type=text name=abbr value=$actionForm->get('abbr') size=20 maxlength=60}></dd>
+  <dt><{$smarty.const._MD_TRPG_LANG_PUB_ID}></dt>
+  <dd><select name="pub_id">
+	<{legacy_category_select tree=$Pub_idTree selectedValue=$actionForm->get('pub_id')}>
+  </select></dd>
+
+  <dt><{$smarty.const._MD_TRPG_LANG_URL}></dt>
+  <dd><{xoops_input type=text name=url value=$actionForm->get('url') size=40 maxlength=255}></dd>
+  <dt><{$smarty.const._MD_TRPG_LANG_DESCRIPTION}></dt>
+  <dd><{xoops_dhtmltarea type=text name=description value=$actionForm->get('description') editor=html}></dd>
+  <dt><{$smarty.const._MD_TRPG_LANG_IMAGE}></dt>
+  <dd>
+  	<{if $image}>
+  	<img src="<{$image->getFileUrl(1)}>" alt="<{$image->getShow('title')}>" />
+  	<img src="<{$image->getFileUrl(2)}>" alt="<{$image->getShow('title')}>" />
+  	<{/if}>
+  	<{xoops_input type=file name=image1 size=30}>
+  </dd>
+    <dt></dt>
+    <dd>
+      <{xoops_token form=$actionForm}>
+      <{xoops_input type=hidden name=rpg_id value=$actionForm->get('rpg_id')}>
+      <input type="submit" value="<{$smarty.const._SUBMIT}>" />
+      <input type="submit" value="<{$smarty.const._CANCEL}>" name="_form_control_cancel" />
+    </dd>
+  </dl>
+</form>
+</div>

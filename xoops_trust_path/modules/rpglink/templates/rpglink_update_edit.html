@@ -1,0 +1,38 @@
+<div id="rpglink">
+<h1><{$smarty.const._MD_RPGLINK_LANG_UPDATE_EDIT}></h1>
+<{if $actionForm->hasError()}>
+  <ul class="error">
+    <{foreach item=message from=$actionForm->getErrorMessages()}>
+      <li><{$message|xoops_escape}></li>
+    <{/foreach}>
+  </ul>
+<{/if}>
+<form action="<{xoops_cooluri dirname=$dirname dataname=update action=edit}>" method="post">
+  <dl>
+
+  <{xoops_input type=hidden name=UPDATE_ID value=$actionForm->get('update_id')}>
+
+  <dt><{$smarty.const._MD_RPGLINK_LANG_SITE_NAME}></dt>
+  <dd><{$object->mLink->getShow('title')}></dd>
+
+  <dt class="required"><{$smarty.const._MD_RPGLINK_LANG_TITLE}></dt>
+  <dd><{xoops_input type=text name=title value=$actionForm->get('title') size=20 maxlength=255 class="required"}></dd>
+
+  <dt><{$smarty.const._MD_RPGLINK_LANG_URL}></dt>
+  <dd><{xoops_input type=text name=url value=$actionForm->get('url') size=40 maxlength=255}></dd>
+  <dt><{$smarty.const._MD_RPGLINK_LANG_UPDATE_TIME}></dt>
+  <dd><{xoops_input type=text name=update_time value=$actionForm->get('update_time') size=10 class=datePicker}></dd>
+  <dt><{$smarty.const._MD_RPGLINK_LANG_DESCRIPTION}></dt>
+  <dd><{xoops_dhtmltarea type=text name=description value=$actionForm->get('description') editor=html}></dd>
+
+    <dt></dt>
+    <dd>
+      <{xoops_token form=$actionForm}>
+      <{xoops_input type=hidden name=update_id value=$actionForm->get('update_id')}>
+		  <{xoops_input type=hidden name=link_id value=$actionForm->get('link_id')}>
+      <input type="submit" value="<{$smarty.const._SUBMIT}>" />
+      <input type="submit" value="<{$smarty.const._CANCEL}>" name="_form_control_cancel" />
+    </dd>
+  </dl>
+</form>
+</div>

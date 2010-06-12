@@ -1,0 +1,86 @@
+<div id="playermap">
+<h1><{$smarty.const._MD_PLAYERMAP_LANG_PLAYER_EDIT}></h1>
+<{if $actionForm->hasError()}>
+  <ul class="error">
+    <{foreach item=message from=$actionForm->getErrorMessages()}>
+      <li><{$message|xoops_escape}></li>
+    <{/foreach}>
+  </ul>
+<{/if}>
+<form action="<{xoops_cooluri dirname=$dirname dataname=player action=edit}>" method="post" enctype="multipart/form-data">
+  <dl>
+
+  <{xoops_input type=hidden name=UID value=$actionForm->get('uid')}>
+
+  <dt class="required"><{$smarty.const._MD_PLAYERMAP_LANG_NAME}></dt>
+  <dd><{xoops_input type=text name=name value=$actionForm->get('name') size=20 maxlength=255 class="required"}></dd>
+
+  <dt><{$smarty.const._MD_PLAYERMAP_LANG_GENDER}></dt>
+  <dd><{playermap_input class=gender name=gender value=$actionForm->get('gender')}></dd>
+
+  <dt><{$smarty.const._MD_PLAYERMAP_LANG_BIRTHYEAR}></dt>
+  <dd><{xoops_input type=text name=birthyear value=$actionForm->get('birthyear') size=10}></dd>
+
+  <dt><{$smarty.const._MD_PLAYERMAP_LANG_STARTYEAR}></dt>
+  <dd><{xoops_input type=text name=startyear value=$actionForm->get('startyear') size=10}></dd>
+  <dt class="required"><{$smarty.const._MD_PLAYERMAP_LANG_PREF_ID}></dt>
+  <dd><select name="pref_id">
+	<{legacy_category_select tree=$Pref_idTree selectedValue=$actionForm->get('pref_id')}>
+  </select></dd>
+  <dt><{$smarty.const._MD_PLAYERMAP_LANG_ADDRESS}></dt>
+  <dd><{xoops_textarea type=text name=address value=$actionForm->get('address')}></dd>
+  <dt><{$smarty.const._MD_PLAYERMAP_LANG_PL}></dt>
+  <dd><div id="map"></div>
+  <{xoops_input type=text name=pl_lat value=$actionForm->get('pl_lat') size=10}>
+  <{xoops_input type=text name=pl_lng value=$actionForm->get('pl_lng') size=10}>
+  </dd>
+
+  <dt><{$smarty.const._MD_PLAYERMAP_LANG_ROLE}></dt>
+  <dd><{playermap_input class=role name=role value=$actionForm->get('role')}></dd>
+
+  <dt><{$smarty.const._MD_PLAYERMAP_LANG_SUN}></dt>
+  <dd><{playermap_input class=offtime name=sun value=$actionForm->get('sun')}></dd>
+
+  <dt><{$smarty.const._MD_PLAYERMAP_LANG_MON}></dt>
+  <dd><{playermap_input class=offtime name=mon value=$actionForm->get('mon')}></dd>
+
+  <dt><{$smarty.const._MD_PLAYERMAP_LANG_TUE}></dt>
+  <dd><{playermap_input class=offtime name=tue value=$actionForm->get('tue')}></dd>
+
+  <dt><{$smarty.const._MD_PLAYERMAP_LANG_WED}></dt>
+  <dd><{playermap_input class=offtime name=wed value=$actionForm->get('wed')}></dd>
+
+  <dt><{$smarty.const._MD_PLAYERMAP_LANG_THU}></dt>
+  <dd><{playermap_input class=offtime name=thu value=$actionForm->get('thu')}></dd>
+
+  <dt><{$smarty.const._MD_PLAYERMAP_LANG_FRI}></dt>
+  <dd><{playermap_input class=offtime name=fri value=$actionForm->get('fri')}></dd>
+
+  <dt><{$smarty.const._MD_PLAYERMAP_LANG_SAT}></dt>
+  <dd><{playermap_input class=offtime name=sat value=$actionForm->get('sat')}></dd>
+
+  <dt><{$smarty.const._MD_PLAYERMAP_LANG_HOL}></dt>
+  <dd><{playermap_input class=offtime name=hol value=$actionForm->get('hol')}></dd>
+
+  <dt><{$smarty.const._MD_PLAYERMAP_LANG_PBN}></dt>
+  <dd><{playermap_input class=offtime name=pbn value=$actionForm->get('pbn')}></dd>
+  <dt><{$smarty.const._MD_PLAYERMAP_LANG_DESCRIPTION}></dt>
+  <dd><{xoops_dhtmltarea type=text name=description value=$actionForm->get('description') editor=html}></dd>
+  <dt><{$smarty.const._MD_PLAYERMAP_LANG_IMAGE}></dt>
+  <dd>
+  	<{if $image}>
+  	<img src="<{$image->getFileUrl(1)}>" alt="<{$image->getShow('title')}>" />
+  	<{/if}>
+  	<{xoops_input type=file name=image1 size=30}>
+  </dd>
+
+    <dt></dt>
+    <dd>
+      <{xoops_token form=$actionForm}>
+      <{xoops_input type=hidden name=uid value=$actionForm->get('uid')}>
+      <input type="submit" value="<{$smarty.const._SUBMIT}>" />
+      <input type="submit" value="<{$smarty.const._CANCEL}>" name="_form_control_cancel" />
+    </dd>
+  </dl>
+</form>
+</div>

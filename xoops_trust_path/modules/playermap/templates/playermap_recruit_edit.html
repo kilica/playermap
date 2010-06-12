@@ -1,0 +1,34 @@
+<div id="playermap">
+<h1><{$smarty.const._MD_PLAYERMAP_LANG_RECRUIT_EDIT}></h1>
+<{if $actionForm->hasError()}>
+  <ul class="error">
+    <{foreach item=message from=$actionForm->getErrorMessages()}>
+      <li><{$message|xoops_escape}></li>
+    <{/foreach}>
+  </ul>
+<{/if}>
+<form action="<{xoops_cooluri dirname=$dirname dataname=recruit action=edit}>" method="post">
+  <dl>
+
+  <{xoops_input type=hidden name=RECRUIT_ID value=$actionForm->get('recruit_id')}>
+
+  <dt class="required"><{$smarty.const._MD_PLAYERMAP_LANG_TITLE}></dt>
+  <dd><{xoops_input type=text name=title value=$actionForm->get('title') size=20 maxlength=255 class="required"}></dd>
+
+  <dt><{$smarty.const._MD_PLAYERMAP_LANG_GROUP_ID}></dt>
+  <dd><{xoops_input type=text name=group_id value=$actionForm->get('group_id') size=10}></dd>
+  <dt><{$smarty.const._MD_PLAYERMAP_LANG_ENDTIME}></dt>
+  <dd><{xoops_input type=text name=endtime value=$actionForm->get('endtime') size=10 class=datePicker}></dd>
+  <dt><{$smarty.const._MD_PLAYERMAP_LANG_DESCRIPTION}></dt>
+  <dd><{xoops_dhtmltarea type=text name=description value=$actionForm->get('description') editor=html}></dd>
+
+    <dt></dt>
+    <dd>
+      <{xoops_token form=$actionForm}>
+      <{xoops_input type=hidden name=recruit_id value=$actionForm->get('recruit_id')}>
+      <input type="submit" value="<{$smarty.const._SUBMIT}>" />
+      <input type="submit" value="<{$smarty.const._CANCEL}>" name="_form_control_cancel" />
+    </dd>
+  </dl>
+</form>
+</div>

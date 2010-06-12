@@ -1,0 +1,33 @@
+<div id="playermap">
+<h1><{$smarty.const._MD_PLAYERMAP_LANG_MEMBER_EDIT}></h1>
+<{if $actionForm->hasError()}>
+  <ul class="error">
+    <{foreach item=message from=$actionForm->getErrorMessages()}>
+      <li><{$message|xoops_escape}></li>
+    <{/foreach}>
+  </ul>
+<{/if}>
+<form action="<{xoops_cooluri dirname=$dirname dataname=member action=edit}>" method="post">
+  <dl>
+
+  <{xoops_input type=hidden name=MEMBER_ID value=$actionForm->get('member_id')}>
+
+  <dt><{$smarty.const._MD_PLAYERMAP_LANG_GROUP_ID}></dt>
+  <dd><{xoops_input type=text name=group_id value=$actionForm->get('group_id') size=10}></dd>
+
+  <dt><{$smarty.const._MD_PLAYERMAP_LANG_SINCE}></dt>
+  <dd><{xoops_input type=text name=since value=$actionForm->get('since') size=10}></dd>
+
+  <dt><{$smarty.const._MD_PLAYERMAP_LANG_RANK}></dt>
+  <dd><{xoops_input type=text name=rank value=$actionForm->get('rank') size=10}></dd>
+
+    <dt></dt>
+    <dd>
+      <{xoops_token form=$actionForm}>
+      <{xoops_input type=hidden name=member_id value=$actionForm->get('member_id')}>
+      <input type="submit" value="<{$smarty.const._SUBMIT}>" />
+      <input type="submit" value="<{$smarty.const._CANCEL}>" name="_form_control_cancel" />
+    </dd>
+  </dl>
+</form>
+</div>

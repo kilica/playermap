@@ -1,0 +1,29 @@
+<div id="playermap">
+<h1><{$smarty.const._MD_PLAYERMAP_LANG_CONV}><{$smarty.const._LIST}></h1>
+<ul class="toptab">
+  <li><a href="<{xoops_cooluri dirname=$dirname dataname=$dataname action=edit}>"><{$smarty.const._MD_PLAYERMAP_LANG_ADD_A_NEW_CONV}></a></li>
+</ul>
+
+<{if count($objects) > 0}>
+  <div class="pagenavi"><{xoops_pagenavi pagenavi=$pageNavi}></div>
+
+  <{foreach item=obj from=$objects}>
+  <dl class="widelist">
+  	<dd class="avatar"></dd>
+  	<dt><{$obj->getShow('starttime')|xoops_formattimestamp:s}> <a href="<{xoops_cooluri dirname=$dirname dataname=$dataname data_id=$obj->get('conv_id')}>"><{$obj->getShow('title')}></a></dt>
+  	<dd class="subInfo">
+	  	<ul>
+		  	<li><{assign var=catId value=$obj->getShow('pref_id')}><{$Pref_idTitleList.$catId}></li>
+		  	<li><{$obj->getShow('site')}></li>
+		  	<li><{$obj->getShow('booking')|playermap_show:Pmenum_Booking}></li>
+		  	<li><a href="<{$obj->getShow('url')}>">HP</a></li>
+	  	</ul>
+  	</dd>
+  	<dd class="description"><{$obj->get('description')|strip_tags|mb_substr:0:100}></dd>
+	</dl>
+	<div class="clear"></div>
+  <{/foreach}>
+
+  <div class="pagenavi"><{xoops_pagenavi pagenavi=$pageNavi}></div>
+<{/if}>
+</div>

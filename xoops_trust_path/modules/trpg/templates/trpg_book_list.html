@@ -1,0 +1,26 @@
+<div id="trpg">
+<h1><{$smarty.const._MD_TRPG_LANG_BOOK}><{$smarty.const._LIST}></h1>
+
+<input type="text" id="incsearch" />
+<ul id="searchList"></ul>
+
+<{if count($objects) > 0}>
+  <div class="pagenavi"><{xoops_pagenavi pagenavi=$pageNavi}></div>
+    <{foreach item=obj from=$objects}>
+    <dl class="widelist">
+	  	<dt><a href="<{xoops_cooluri dirname=$dirname dataname=$dataname data_id=$obj->get('book_id')}>"><{$obj->getShow('title')}></a></dt>
+	  	<dd class="subInfo">
+	  	<ul>
+	    <li><{$obj->mRpg->getShow('title')}></li>
+	    <li><{assign var=catId value=$obj->getShow('pub_id')}><{$Pub_idTitleList.$catId}></li>
+	    <li><{$obj->getShow('pubyear')}></li>
+	    <li><{$obj->getShow('price')}><{$obj->getShow('currency')|playermap_show:Pmenum_Currency}></li>
+	    <li><a href="<{$obj->getShow('url')}>">HP</a></li>
+		  </ul>
+		  </dd>
+	  	<dd class="description"><{$obj->get('description')|strip_tags|mb_substr:0:100}></dd>
+  	</dl>
+    <{/foreach}>
+  <div class="pagenavi"><{xoops_pagenavi pagenavi=$pageNavi}></div>
+<{/if}>
+</div>

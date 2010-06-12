@@ -1,0 +1,35 @@
+<div id="rpglink">
+<h1><{$smarty.const._MD_RPGLINK_LANG_LINK_DELETE}></h1>
+
+<div class="confirm"><{$smarty.const._MD_RPGLINK_MESSAGE_CONFIRM_DELETE}></div>
+
+<form action="./index.php?action=LinkDelete" method="post">
+  <dl>
+  <dt><{$smarty.const._MD_RPGLINK_LANG_LINK_ID}></dt>
+  <dd><{$object->getShow('link_id')}></dd>
+  <dt><{$smarty.const._MD_RPGLINK_LANG_SITE_NAME}></dt>
+  <dd><{$object->getShow('title')}></dd>
+  <dt><{$smarty.const._MD_RPGLINK_LANG_UID}></dt>
+  <dd><{$object->getShow('uid')|xoops_user:user_name}></dd>
+  <dt><{$smarty.const._MD_RPGLINK_LANG_URL}></dt>
+  <dd><{$object->getShow('url')}></dd>
+  <dt><{$smarty.const._MD_RPGLINK_LANG_BANNER}></dt>
+  <dd><{$object->getShow('banner')}></dd>
+  <dt><{$smarty.const._MD_RPGLINK_LANG_RSS}></dt>
+  <dd><{$object->getShow('rss')}></dd>
+  <dt><{$smarty.const._MD_RPGLINK_LANG_PREF_ID}></dt>
+  <dd><{$Pref_idTitle}></dd>
+  <dt><{$smarty.const._MD_RPGLINK_LANG_DESCRIPTION}></dt>
+  <dd><{$object->getShow('description')}></dd>
+  <dt><{$smarty.const._MD_RPGLINK_LANG_POSTTIME}></dt>
+  <dd><{$object->getShow('posttime')|xoops_formattimestamp:m}></dd>
+
+    <dd>
+      <{xoops_token form=$actionForm}>
+      <{xoops_input type=hidden name=link_id value=$actionForm->get('link_id')}>
+      <input type="submit" class="formButton" value="<{$smarty.const._DELETE}>"/>
+      <input type="submit" class="formButton" value="<{$smarty.const._CANCEL}>" name="_form_control_cancel"/>
+    </dd>
+  </dl>
+</form>
+</div>

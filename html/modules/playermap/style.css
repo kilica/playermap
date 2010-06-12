@@ -1,0 +1,154 @@
+#playermap{
+	font-size: 15px;
+	line-height:	1.3em;
+}
+
+#playermap h1{
+	border: none;
+	margin-bottom:	15px;
+	font-size:	1.5em
+}
+
+#playermap h2{
+	border: none;
+	margin-bottom:	15px;
+	font-size:	1.3em
+}
+
+#playermap h3{
+	border: none;
+	margin: 0px 0px 0px 0px;
+	font-size:	1.1em
+}
+
+#playermap .desc{
+	border: 1px solid #DDDDDD;
+	margin: 10px 20px 10px 20px;
+	padding:	10px;
+}
+
+#playermap .clear{
+	clear:	both;
+}
+
+#playermapMenu ul li{
+	width:	50px;
+	float:	left;
+	margin-left:	25px;
+	margin-bottom:	25px;
+	list-style-type: none;
+}
+
+
+/*** Sub Info ***/
+.subInfo {
+	display:block;
+	height:50px;
+	width:600px;
+}
+
+.subInfo li {
+	float:left;
+	margin-right:10px;
+}
+
+.subInfo li .title{
+	font-size: 0.9em;
+}
+
+/* 2 column table */
+
+#playermap .viewDetail dt{
+clear:both;
+width:140px;
+float:left;
+margin-top:10px;
+}
+
+#playermap .viewDetail dd{
+float:left;
+margin-top:10px;
+}
+
+/* Form */
+
+#playermap form{
+	
+}
+
+#playermap form dt{
+clear:both;
+width:140px;
+float:left;
+margin-top:10px;
+}
+
+#playermap form dd{
+float:left;
+margin-top:10px;
+}
+
+#playermap form dd.description{
+}
+
+/* List */
+
+.widelist {
+	clear : both;
+	width : 620px;
+}
+
+.widelist dl {
+	width : 600px;
+}
+
+.widelist dt {
+	background-color: #EEEEEE;
+	font-size: 1.4em;
+}
+
+.widelist .avatar {
+	float:left;
+	width:120px;
+	height: 120px;
+}
+
+.widelist .subInfo {
+	font-size: 0.9em;
+	display:block;
+	height:50px;
+	width:600px;
+}
+
+.widelist .subInfo li {
+	float:left;
+	font-size: 0.9em;
+	margin-right:10px;
+}
+
+.widelist dd.description {
+	font-size: 0.9em;
+}
+
+/* date */
+.offtime-0 {
+	background-color: #ffffff;
+	color: #dddddd;
+}
+
+.offtime-1 {
+	background-color: #eeeeee;
+	color: #999999;
+}
+
+.offtime-2 {
+	background-color: #660000;
+	color: #dddddd;
+}
+
+.offtime-3 {
+	background-color: #FF0000;
+	color: #FFFFFF;
+}
+
+

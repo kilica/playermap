@@ -1,0 +1,25 @@
+<div id="playermap">
+<h1><{$smarty.const._MD_PLAYERMAP_LANG_CIRCLE_DELETE}></h1>
+
+<div class="confirm"><{$smarty.const._MD_PLAYERMAP_MESSAGE_CONFIRM_DELETE}></div>
+
+<form action="./index.php?action=CircleDelete" method="post">
+  <dl>
+  <dt><{$smarty.const._MD_PLAYERMAP_LANG_GROUP_ID}></dt>
+  <dd><{$object->getShow('group_id')}></dd>
+  <dt><{$smarty.const._MD_PLAYERMAP_LANG_ADDRESS}></dt>
+  <dd><{$object->getShow('address')}></dd>
+  <dt><{$smarty.const._MD_PLAYERMAP_LANG_PREF_ID}></dt>
+  <dd><{$Pref_idTitle}></dd>
+  <dt><{$smarty.const._MD_PLAYERMAP_LANG_POSTTIME}></dt>
+  <dd><{$object->getShow('posttime')|xoops_formattimestamp:m}></dd>
+
+    <dd>
+      <{xoops_token form=$actionForm}>
+      <{xoops_input type=hidden name=group_id value=$actionForm->get('group_id')}>
+      <input type="submit" class="formButton" value="<{$smarty.const._DELETE}>"/>
+      <input type="submit" class="formButton" value="<{$smarty.const._CANCEL}>" name="_form_control_cancel"/>
+    </dd>
+  </dl>
+</form>
+</div>

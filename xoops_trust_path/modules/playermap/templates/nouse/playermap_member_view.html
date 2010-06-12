@@ -1,0 +1,18 @@
+<div id="playermap">
+<h1><{$smarty.const._VIEW}></h1>
+
+
+<{playermap_iseditor dataname="member" data_id=$object->getShow('member_id')}>
+
+<dl class="viewDetail">
+  <dt><{$smarty.const._MD_PLAYERMAP_LANG_MEMBER_ID}></dt>
+  <dd><{$object->getShow('member_id')}></dd>
+  <dt><{$smarty.const._MD_PLAYERMAP_LANG_UID}></dt>
+  <dd><{$object->getShow('uid')|xoops_user:user_name}></dd>
+  <dt><{$smarty.const._MD_PLAYERMAP_LANG_STATUS}></dt>
+  <dd><{$object->getShowStatus()}></dd>
+  <dt><{$smarty.const._MD_PLAYERMAP_LANG_POSTTIME}></dt>
+  <dd><{$object->getShow('posttime')|xoops_formattimestamp:m}></dd>
+
+</dl>
+</div>

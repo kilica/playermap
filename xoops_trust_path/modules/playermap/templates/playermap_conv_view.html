@@ -1,0 +1,39 @@
+<div id="playermap">
+<h1><{$object->getShow('title')}></h1>
+
+<dl class="subInfo">
+  <dt><{$smarty.const._MD_PLAYERMAP_LANG_UID}></dt>
+  <dd><{$object->getShow('uid')|xoops_user:user_name}></dd>
+  <dt><{$smarty.const._MD_PLAYERMAP_LANG_PREF_ID}></dt>
+  <dd><{$Pref_idTitle}></dd>
+</dl>
+
+<{playermap_iseditor dataname="conv" data_id=$object->getShow('conv_id')}>
+
+<dl class="viewDetail">
+  <dt><{$smarty.const._MD_PLAYERMAP_LANG_SITE}></dt>
+  <dd><{$object->getShow('site')}></dd>
+  <dt><{$smarty.const._MD_PLAYERMAP_LANG_ADDRESS}></dt>
+  <dd><{$object->getShow('address')}></dd>
+  <dt><{$smarty.const._MD_PLAYERMAP_LANG_STARTTIME}></dt>
+  <dd><{$object->getShow('starttime')|xoops_formattimestamp:m}></dd>
+  <dt><{$smarty.const._MD_PLAYERMAP_LANG_ENDTIME}></dt>
+  <dd><{$object->getShow('endtime')|xoops_formattimestamp:m}></dd>
+  <dt><{$smarty.const._MD_PLAYERMAP_LANG_FEE}></dt>
+  <dd><{$object->getShow('fee')}></dd>
+  <dt><{$smarty.const._MD_PLAYERMAP_LANG_URL}></dt>
+  <dd><{$object->getShow('url')}></dd>
+  <dt><{$smarty.const._MD_PLAYERMAP_LANG_DESCRIPTION}></dt>
+  <dd><{$object->getShow('description')}></dd>
+</dl>
+
+<div class="clear"></div>
+
+<div id="tab">
+	<div id="log">
+	<h2><{$smarty.const._MD_PLAYERMAP_LANG_LOG}></h2>
+	<{playermap_list dirname=$object->getDirname() dataname=conv data_id=$object->get('conv_id') childname=log template=widelist}>
+	</div><!-- id:log -->
+</div>
+
+</div>

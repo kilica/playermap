@@ -1,0 +1,35 @@
+<div id="playermap">
+<h1><{$smarty.const._MD_PLAYERMAP_LANG_REVIEW_EDIT}></h1>
+<{if $actionForm->hasError()}>
+  <ul class="error">
+    <{foreach item=message from=$actionForm->getErrorMessages()}>
+      <li><{$message|xoops_escape}></li>
+    <{/foreach}>
+  </ul>
+<{/if}>
+<form action="<{xoops_cooluri dirname=$dirname dataname=review action=edit}>" method="post">
+  <dl>
+
+  <{xoops_input type=hidden name=REVIEW_ID value=$actionForm->get('review_id')}>
+
+  <dt><{$smarty.const._MD_PLAYERMAP_LANG_BOOK_ID}></dt>
+  <dd><{xoops_input type=text name=book_id value=$actionForm->get('book_id') size=10}></dd>
+
+  <dt><{$smarty.const._MD_PLAYERMAP_LANG_RATING}></dt>
+  <dd><{playermap_input class=rating name=rating value=$actionForm->get('rating')}></dd>
+
+  <dt><{$smarty.const._MD_PLAYERMAP_LANG_IMPORTANCE}></dt>
+  <dd><{playermap_input class=importance name=importance value=$actionForm->get('importance')}></dd>
+  <dt><{$smarty.const._MD_PLAYERMAP_LANG_DESCRIPTION}></dt>
+  <dd><{xoops_dhtmltarea type=text name=description value=$actionForm->get('description') editor=html}></dd>
+
+    <dt></dt>
+    <dd>
+      <{xoops_token form=$actionForm}>
+      <{xoops_input type=hidden name=review_id value=$actionForm->get('review_id')}>
+      <input type="submit" value="<{$smarty.const._SUBMIT}>" />
+      <input type="submit" value="<{$smarty.const._CANCEL}>" name="_form_control_cancel" />
+    </dd>
+  </dl>
+</form>
+</div>

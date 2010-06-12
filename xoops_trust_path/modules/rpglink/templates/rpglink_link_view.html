@@ -1,0 +1,43 @@
+<div id="rpglink">
+<h1><{$object->getShow('title')}></h1>
+
+<ul class="subInfo">
+  <li><a href="<{xoops_cooluri dirname=playermap dataname=player data_id=$object->get('uid')}>"><{$object->getShow('uid')|xoops_user:user_name}></a></li>
+  <{if $Pref_idTitle}><li><{$Pref_idTitle}></li><{/if}>
+</ul>
+
+<{playermap_iseditor dataname="link" data_id=$object->getShow('link_id')}>
+<{playermap_iseditor dataname="link" data_id=$object->getShow('link_id') childname="update"}>
+<{playermap_iseditor dataname="link" data_id=$object->getShow('link_id') childname="lrpg"}>
+
+<div id="tab" class="tab">
+	<ul>
+		<li><a href="#desc"><{$smarty.const._MD_RPGLINK_LANG_DESCRIPTION}></a></li>
+		<li><a href="#update"><{$smarty.const._MD_RPGLINK_LANG_UPDATE}></a></li>
+		<li><a href="#lrpg"><{$smarty.const._MD_RPGLINK_LANG_LRPG}></a></li>
+	</ul>
+
+	<div id="desc">
+		<dl class="viewDetail">
+		  <dt><{$smarty.const._MD_RPGLINK_LANG_URL}></dt>
+		  <dd><{$object->getShow('url')}></dd>
+		  <dt><{$smarty.const._MD_RPGLINK_LANG_BANNER}></dt>
+		  <dd><{$object->getShow('banner')}></dd>
+		  <dt><{$smarty.const._MD_RPGLINK_LANG_RSS}></dt>
+		  <dd><{$object->getShow('rss')}></dd>
+		  <dt><{$smarty.const._MD_RPGLINK_LANG_DESCRIPTION}></dt>
+		  <dd><{$object->get('description')}></dd>
+		</dl>
+	</div>
+
+	<div class="clear"></div>
+
+	<div id="update">
+	<{playermap_list dirname=$object->getDirname() dataname=link data_id=$object->get('link_id') childname=update template=widelist}>
+	</div><!-- id:update -->
+
+	<div id="lrpg">
+	<{playermap_list dirname=$object->getDirname() dataname=link data_id=$object->get('link_id') childname=lrpg template=widelist}>
+	</div><!-- id:lrpg -->
+</div>
+</div>

@@ -1,0 +1,16 @@
+<div id="rpglink">
+<h1><{$object->getShow('title')}></h1>
+<dl class="subInfo">
+  <dt><{$smarty.const._MD_RPGLINK_LANG_UPDATE_TIME}></dt>
+  <dd><{$object->getShow('update_time')|xoops_formattimestamp:s}></dd>
+</dl>
+<{playermap_iseditor dataname=update data_id=$object->getShow('update_id')}>
+<dl class="viewDetail">
+  <dt><{$smarty.const._MD_RPGLINK_LANG_SITE_NAME}></dt>
+  <dd><a href="<{xoops_cooluri dirname=$object->getDirname() data_id=$object->getShow('link_id')}>"><{$object->mLink->getShow('title')}></a></dd>
+  <dt><{$smarty.const._MD_RPGLINK_LANG_URL}></dt>
+  <dd><{$object->getShow('url')}></dd>
+  <dt><{$smarty.const._MD_RPGLINK_LANG_DESCRIPTION}></dt>
+  <dd><{$object->get('description')}></dd>
+</dl>
+</div>

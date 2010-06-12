@@ -1,0 +1,25 @@
+<div id="playermap">
+<h1><{$smarty.const._MD_PLAYERMAP_LANG_REVIEW}><{$smarty.const._LIST}></h1>
+<ul class="toptab">
+  <li><a href="<{xoops_cooluri dirname=$dirname dataname=$dataname action=edit}>"><{$smarty.const._MD_PLAYERMAP_LANG_ADD_A_NEW_REVIEW}></a></li>
+</ul>
+
+<{if count($objects) > 0}>
+  <div class="pagenavi"><{xoops_pagenavi pagenavi=$pageNavi}></div>
+	<{foreach item=obj from=$objects}>
+	<dl class="widelist">
+  	<dd class="avatar"></dd>
+  	<dt><{$obj->getShow('rating')}> <a href="<{xoops_cooluri dirname=$dirname dataname=$dataname data_id=$obj->get('review_id')}>"><{$obj->mBook->getShow('title')}></a></dt>
+  	<dd class="subInfo">
+			<ul>
+			<li><{$obj->getShow('uid')|xoops_user:user_name}></li>
+			<li><{$obj->getShow('importance')}></li>
+			<li><{$obj->getShow('posttime')|xoops_formattimestamp:m}></li>
+			</ul>
+		</dd>
+  	<dd class="description"><{$obj->get('description')|strip_tags|mb_substr:0:100}></dd>
+	</dl>
+	<{/foreach}>
+  <div class="pagenavi"><{xoops_pagenavi pagenavi=$pageNavi}></div>
+<{/if}>
+</div>

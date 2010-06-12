@@ -1,0 +1,61 @@
+<div id="playermap">
+<h1><{$smarty.const._LIST}></h1>
+<ul class="toptab">
+  <li><a href="<{xoops_cooluri dirname=$dirname dataname=$dataname action=edit}>"><{$smarty.const._MD_PLAYERMAP_LANG_ADD_A_NEW_ENTRY}></a></li>
+</ul>
+
+<{if count($objects) > 0}>
+  <div class="pagenavi"><{xoops_pagenavi pagenavi=$pageNavi}></div>
+  <table class="outer" summary="">
+    <thead>
+      <tr>
+		<th>
+		  <{$smarty.const._MD_PLAYERMAP_LANG_ENTRY_ID}>
+		  <a href="<{$pageNavi->renderUrlForSort()}>&amp;<{$pageNavi->getPrefix()}>sort=<{$smarty.const.PLAYERMAP_ENTRY_ID_SORT_KEY_ENTRY_ID}>"><img src="images/up.gif" alt="<{$smarty.const._ASCENDING}>" title="<{$smarty.const._ASCENDING}>" /></a>
+		  <a href="<{$pageNavi->renderUrlForSort()}>&amp;<{$pageNavi->getPrefix()}>sort=-<{$smarty.const.PLAYERMAP_ENTRY_ID_SORT_KEY_ENTRY_ID}>"><img src="images/down.gif" alt="<{$smarty.const._DESCENDING}>" title="<{$smarty.const._DESCENDING}>" /></a>
+		</th>
+		<th>
+		  <{$smarty.const._MD_PLAYERMAP_LANG_LOG_ID}>
+		  <a href="<{$pageNavi->renderUrlForSort()}>&amp;<{$pageNavi->getPrefix()}>sort=<{$smarty.const.PLAYERMAP_LOG_ID_SORT_KEY_LOG_ID}>"><img src="images/up.gif" alt="<{$smarty.const._ASCENDING}>" title="<{$smarty.const._ASCENDING}>" /></a>
+		  <a href="<{$pageNavi->renderUrlForSort()}>&amp;<{$pageNavi->getPrefix()}>sort=-<{$smarty.const.PLAYERMAP_LOG_ID_SORT_KEY_LOG_ID}>"><img src="images/down.gif" alt="<{$smarty.const._DESCENDING}>" title="<{$smarty.const._DESCENDING}>" /></a>
+		</th>
+		<th>
+		  <{$smarty.const._MD_PLAYERMAP_LANG_UID}>
+		  <a href="<{$pageNavi->renderUrlForSort()}>&amp;<{$pageNavi->getPrefix()}>sort=<{$smarty.const.PLAYERMAP_UID_SORT_KEY_UID}>"><img src="images/up.gif" alt="<{$smarty.const._ASCENDING}>" title="<{$smarty.const._ASCENDING}>" /></a>
+		  <a href="<{$pageNavi->renderUrlForSort()}>&amp;<{$pageNavi->getPrefix()}>sort=-<{$smarty.const.PLAYERMAP_UID_SORT_KEY_UID}>"><img src="images/down.gif" alt="<{$smarty.const._DESCENDING}>" title="<{$smarty.const._DESCENDING}>" /></a>
+		</th>
+		<th>
+		  <{$smarty.const._MD_PLAYERMAP_LANG_ROLE}>
+		  <a href="<{$pageNavi->renderUrlForSort()}>&amp;<{$pageNavi->getPrefix()}>sort=<{$smarty.const.PLAYERMAP_ROLE_SORT_KEY_ROLE}>"><img src="images/up.gif" alt="<{$smarty.const._ASCENDING}>" title="<{$smarty.const._ASCENDING}>" /></a>
+		  <a href="<{$pageNavi->renderUrlForSort()}>&amp;<{$pageNavi->getPrefix()}>sort=-<{$smarty.const.PLAYERMAP_ROLE_SORT_KEY_ROLE}>"><img src="images/down.gif" alt="<{$smarty.const._DESCENDING}>" title="<{$smarty.const._DESCENDING}>" /></a>
+		</th>
+		<th>
+		  <{$smarty.const._MD_PLAYERMAP_LANG_POSTTIME}>
+		  <a href="<{$pageNavi->renderUrlForSort()}>&amp;<{$pageNavi->getPrefix()}>sort=<{$smarty.const.PLAYERMAP_POSTTIME_SORT_KEY_POSTTIME}>"><img src="images/up.gif" alt="<{$smarty.const._ASCENDING}>" title="<{$smarty.const._ASCENDING}>" /></a>
+		  <a href="<{$pageNavi->renderUrlForSort()}>&amp;<{$pageNavi->getPrefix()}>sort=-<{$smarty.const.PLAYERMAP_POSTTIME_SORT_KEY_POSTTIME}>"><img src="images/down.gif" alt="<{$smarty.const._DESCENDING}>" title="<{$smarty.const._DESCENDING}>" /></a>
+		</th>
+
+        <th><{$smarty.const._MD_PLAYERMAP_LANG_CONTROL}></th>
+      </tr>
+    </thead>
+    <tbody>
+      <{foreach item=obj from=$objects}>
+        <tr class="<{cycle values='odd,even'}>">
+		   <td><{$obj->getShow('entry_id')}></td>
+		   <td><{$obj->getShow('log_id')}></td>
+		   <td><{$obj->getShow('uid')|xoops_user:user_name}></td>
+		   <td><{$obj->getShow('role')}></td>
+		   <td><{$obj->getShow('posttime')|xoops_formattimestamp:m}></td>
+
+          <td>
+            <a href="<{xoops_cooluri dirname=$dirname dataname=$dataname data_id=$obj->getShow('entry_id') action=view}>"><{$smarty.const._VIEW}></a>
+            <a href="<{xoops_cooluri dirname=$dirname dataname=$dataname data_id=$obj->getShow('entry_id') action=edit}>"><{$smarty.const._EDIT}></a>
+            <a href="<{xoops_cooluri dirname=$dirname dataname=$dataname data_id=$obj->getShow('entry_id') action=delete}>"><{$smarty.const._DELETE}></a>
+          </td>
+        </tr>
+      <{/foreach}>
+    </tbody>
+  </table>
+  <div class="pagenavi"><{xoops_pagenavi pagenavi=$pageNavi}></div>
+<{/if}>
+</div>

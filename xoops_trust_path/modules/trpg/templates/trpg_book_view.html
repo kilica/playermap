@@ -1,0 +1,38 @@
+<div id="trpg">
+<h1><{$object->getShow('title')}></h1>
+
+<ul class="subInfo">
+  <{if $object->getShow('version')}><li><span class="title"><{$smarty.const._MD_TRPG_LANG_VERSION}>: </span><{$object->getShow('version')}></li><{/if}>
+  <{if $object->getShow('pubyear')>0}><li><{$object->getShow('pubyear')}><{$smarty.const._MD_TRPG_LANG_YEAR}></li><{/if}>
+  <{if $object->getSHow('price')}>
+  <li><{$object->getShow('price')}> <{$object->getShow('currency')|playermap_show:Pmenum_Currency}></li>
+  <{/if}>
+</ul>
+
+<{if $xoops_isuser}>
+<div class="fav-rater" id="book-<{$object->getShow('book_id')}>"><{playermap_input class=rating name=rating value=$object->getMyRating()}></div>
+<{/if}>
+
+<div id="tab" class="tab">
+	<ul>
+		<li><a href="#desc"><{$smarty.const._MD_TRPG_LANG_DESCRIPTION}></a></li>
+		<li><a href="#review"><{$smarty.const._MD_PLAYERMAP_LANG_REVIEW}> (<{$object->countChild('review')}>)</a></li>
+	</ul>
+
+	<div id="desc">
+		<dl class="viewDetail">
+		  <dt><{$smarty.const._MD_TRPG_LANG_SYSTEM_TITLE}></dt>
+		  <dd><a href="<{xoops_cooluri dirname=$object->getDirname() data_id=$object->get('rpg_id')}>"><{$object->mRpg->getShow('title')}></a></dd>
+		  <dt><{$smarty.const._MD_TRPG_LANG_URL}></dt>
+		  <dd><{$object->getShow('url')}></dd>
+		  <dt><{$smarty.const._MD_TRPG_LANG_DESCRIPTION}></dt>
+		  <dd><{$object->get('description')}></dd>
+		</dl>
+	</div>
+
+	<div id="review">
+	<{playermap_list dirname=$object->getDirname() dataname=book data_id=$object->get('book_id') childname=review template=widelist}>
+	</div><!-- id:book -->
+</div>
+
+</div>

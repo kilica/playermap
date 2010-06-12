@@ -1,0 +1,33 @@
+<div id="playermap">
+	<h1><{$object->getShow('title')}></h1>
+
+	<ul class="subInfo">
+	  <li><{$object->getShow('uid')|xoops_user:user_name}></li>
+	  <li><span class="title"><{$smarty.const._MD_PLAYERMAP_LANG_SESSIONTIME}></span><{$object->getShow('sessiontime')|xoops_formattimestamp:s}></li>
+	  <li><span class="title"><{$smarty.const._MD_PLAYERMAP_LANG_SCHEDULETIME}></span><{$object->getShow('scheduletime')|xoops_formattimestamp:s}></li>
+	</ul>
+
+<{playermap_iseditor dataname="log" data_id=$object->getShow('log_id')}>
+<{playermap_iseditor dataname="log" data_id=$object->getShow('log_id') childname="entry"}>
+
+<div id="tab" class="tab">
+	<ul>
+		<li><a href="#desc"><{$smarty.const._MD_PLAYERMAP_LANG_DESCRIPTION}></a></li>
+		<li><a href="#entry"><{$smarty.const._MD_PLAYERMAP_LANG_ENTRY}> (<{$object->countChild('entry')}>)</a></li>
+	</ul>
+
+	<div id="desc">
+		<dl class="viewDetail">
+		  <dt><{$smarty.const._MD_PLAYERMAP_LANG_URL}></dt>
+		  <dd><{$object->getShow('url')}></dd>
+		  <dt><{$smarty.const._MD_PLAYERMAP_LANG_DESCRIPTION}></dt>
+		  <dd><{$object->get('description')}></dd>
+		</dl>
+	</div>
+
+	<div id="entry">
+		<{playermap_list dirname=$object->getDirname() dataname=log data_id=$object->get('log_id') childname=entry template=widelist}>
+	</div><!-- id:entry -->
+</div>
+
+</div>

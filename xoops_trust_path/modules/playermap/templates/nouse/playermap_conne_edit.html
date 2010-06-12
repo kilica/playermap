@@ -1,0 +1,33 @@
+<div id="playermap">
+<h1><{$smarty.const._MD_PLAYERMAP_LANG_CONNE_EDIT}></h1>
+<{if $actionForm->hasError()}>
+  <ul class="error">
+    <{foreach item=message from=$actionForm->getErrorMessages()}>
+      <li><{$message|xoops_escape}></li>
+    <{/foreach}>
+  </ul>
+<{/if}>
+<form action="index.php?action=ConneEdit" method="post">
+  <dl>
+
+  <{xoops_input type=hidden name=CONNE_ID value=$actionForm->get('conne_id')}>
+
+  <dt><{$smarty.const._MD_PLAYERMAP_LANG_CONNE_UID}></dt>
+  <dd><{xoops_input type=text name=conne_uid value=$actionForm->get('conne_uid') size=10}></dd>
+
+  <dt><{$smarty.const._MD_PLAYERMAP_LANG_LEVEL}></dt>
+  <dd><{xoops_input type=text name=level value=$actionForm->get('level') size=10}></dd>
+
+  <dt><{$smarty.const._MD_PLAYERMAP_LANG_STAT}></dt>
+  <dd><{xoops_input type=text name=stat value=$actionForm->get('stat') size=10}></dd>
+
+    <dt></dt>
+    <dd>
+      <{xoops_token form=$actionForm}>
+      <{xoops_input type=hidden name=conne_id value=$actionForm->get('conne_id')}>
+      <input type="submit" value="<{$smarty.const._SUBMIT}>" />
+      <input type="submit" value="<{$smarty.const._CANCEL}>" name="_form_control_cancel" />
+    </dd>
+  </dl>
+</form>
+</div>

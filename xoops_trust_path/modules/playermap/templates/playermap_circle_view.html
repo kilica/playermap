@@ -1,0 +1,14 @@
+<div id="playermap">
+<h1><{$smarty.const._VIEW}></h1>
+<dl class="viewDetail">
+  <dt><{$smarty.const._MD_PLAYERMAP_LANG_GROUP_ID}></dt>
+  <dd><{$object->getShow('group_id')}></dd>
+  <dt><{$smarty.const._MD_PLAYERMAP_LANG_ADDRESS}></dt>
+  <dd><{$object->getShow('address')}></dd>
+  <dt><{$smarty.const._MD_PLAYERMAP_LANG_PREF_ID}></dt>
+  <dd><{$Pref_idTitle}></dd>
+  <dt><{$smarty.const._MD_PLAYERMAP_LANG_POSTTIME}></dt>
+  <dd><{$object->getShow('posttime')|xoops_formattimestamp:m}></dd>
+
+</dl>
+</div>

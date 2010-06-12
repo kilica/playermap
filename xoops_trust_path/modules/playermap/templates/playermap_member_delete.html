@@ -1,0 +1,25 @@
+<div id="playermap">
+<h1><{$smarty.const._MD_PLAYERMAP_LANG_MEMBER_DELETE}></h1>
+
+<div class="confirm"><{$smarty.const._MD_PLAYERMAP_MESSAGE_CONFIRM_DELETE}></div>
+
+<form action="./index.php?action=MemberDelete" method="post">
+  <dl>
+  <dt><{$smarty.const._MD_PLAYERMAP_LANG_MEMBER_ID}></dt>
+  <dd><{$object->getShow('member_id')}></dd>
+  <dt><{$smarty.const._MD_PLAYERMAP_LANG_UID}></dt>
+  <dd><{$object->getShow('uid')|xoops_user:user_name}></dd>
+  <dt><{$smarty.const._MD_PLAYERMAP_LANG_STATUS}></dt>
+  <dd><{$object->getShowStatus()}></dd>
+  <dt><{$smarty.const._MD_PLAYERMAP_LANG_POSTTIME}></dt>
+  <dd><{$object->getShow('posttime')|xoops_formattimestamp:m}></dd>
+
+    <dd>
+      <{xoops_token form=$actionForm}>
+      <{xoops_input type=hidden name=member_id value=$actionForm->get('member_id')}>
+      <input type="submit" class="formButton" value="<{$smarty.const._DELETE}>"/>
+      <input type="submit" class="formButton" value="<{$smarty.const._CANCEL}>" name="_form_control_cancel"/>
+    </dd>
+  </dl>
+</form>
+</div>

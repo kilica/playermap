@@ -1,0 +1,14 @@
+<div id="playermap">
+<h1><{$smarty.const._VIEW}></h1>
+<dl class="viewDetail">
+  <dt><{$smarty.const._MD_PLAYERMAP_LANG_CONNE_ID}></dt>
+  <dd><{$object->getShow('conne_id')}></dd>
+  <dt><{$smarty.const._MD_PLAYERMAP_LANG_UID}></dt>
+  <dd><{$object->getShow('uid')|xoops_user:user_name}></dd>
+  <dt><{$smarty.const._MD_PLAYERMAP_LANG_ACCEPTTIME}></dt>
+  <dd><{$object->getShow('accepttime')|xoops_formattimestamp:m}></dd>
+  <dt><{$smarty.const._MD_PLAYERMAP_LANG_POSTTIME}></dt>
+  <dd><{$object->getShow('posttime')|xoops_formattimestamp:m}></dd>
+
+</dl>
+</div>

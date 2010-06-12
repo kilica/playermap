@@ -1,0 +1,76 @@
+<div id="playermap">
+<h1><{$smarty.const._MD_PLAYERMAP_LANG_CONV_EDIT}></h1>
+<{if $actionForm->hasError()}>
+  <ul class="error">
+    <{foreach item=message from=$actionForm->getErrorMessages()}>
+      <li><{$message|xoops_escape}></li>
+    <{/foreach}>
+  </ul>
+<{/if}>
+<form action="<{xoops_cooluri dirname=$dirname dataname=conv action=edit}>" method="post" enctype="multipart/form-data">
+  <dl>
+
+  <{xoops_input type=hidden name=CONV_ID value=$actionForm->get('conv_id')}>
+
+  <dt class="required"><{$smarty.const._MD_PLAYERMAP_LANG_TITLE}></dt>
+  <dd><{xoops_input type=text name=title value=$actionForm->get('title') size=40 maxlength=255 class="required"}></dd>
+  <{if $myGroups|count>0}>
+  <dt><{$smarty.const._MD_PLAYERMAP_LANG_GROUP_ID}></dt>
+  <dd>
+	  <label><input type="radio" name="group_id" value="0" /><{$smarty.const._MD_PLAYERMAP_LANG_NO_GROUP}></label>
+	  <{foreach item=group from=$myGroups.title key=g}>
+  	<label><input type="radio" name="group_id" value="<{$myGroups.group_id[$g]}>"<{if $myGroups.group_id[$g]==$actionForm->get('group_id')}> checked="checked"<{/if}> /><{$group}></label>
+  	<{/foreach}>
+	</dd>
+  <{else}>
+  <{xoops_input type=hidden name=group_id value=0}>
+  <{/if}>
+  <dt><{$smarty.const._MD_PLAYERMAP_LANG_PREF_ID}></dt>
+  <dd><select name="pref_id">
+	<{legacy_category_select tree=$Pref_idTree selectedValue=$actionForm->get('pref_id')}>
+  </select></dd>
+
+  <dt><{$smarty.const._MD_PLAYERMAP_LANG_SITE}></dt>
+  <dd><{xoops_input type=text name=site value=$actionForm->get('site') size=40 maxlength=255}></dd>
+  <dt><{$smarty.const._MD_PLAYERMAP_LANG_ADDRESS}></dt>
+  <dd><{xoops_textarea type=text name=address value=$actionForm->get('address')}></dd>
+  <dt><{$smarty.const._MD_PLAYERMAP_LANG_CV}></dt>
+  <dd><iframe width="425" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://maps.google.co.jp/maps?q=google+map&amp;ll=<{$actionForm->get('cv_lat')}>,<{$actionForm->get('cv_lng')}>"></iframe>
+  <{xoops_input type=text name=cv_lat value=$actionForm->get('cv_lat') size=10}>
+  <{xoops_input type=text name=cv_lng value=$actionForm->get('cv_lng') size=10}>
+  </dd>
+  <dt><{$smarty.const._MD_PLAYERMAP_LANG_STARTTIME}></dt>
+  <dd><{xoops_input type=text name=starttime value=$actionForm->get('starttime') size=10 class=datePicker}></dd>
+  <dt><{$smarty.const._MD_PLAYERMAP_LANG_ENDTIME}></dt>
+  <dd><{xoops_input type=text name=endtime value=$actionForm->get('endtime') size=10 class=datePicker}></dd>
+
+  <dt><{$smarty.const._MD_PLAYERMAP_LANG_BOOKING}></dt>
+  <dd><{playermap_input class=booking name=booking value=$actionForm->get('booking')}></dd>
+  <dt><{$smarty.const._MD_PLAYERMAP_LANG_FEE}></dt>
+  <dd><{xoops_textarea type=text name=fee value=$actionForm->get('fee') rows=2}></dd>
+
+  <dt><{$smarty.const._MD_PLAYERMAP_LANG_CAPACITY}></dt>
+  <dd><{xoops_input type=text name=capacity value=$actionForm->get('capacity') size=10}></dd>
+
+  <dt><{$smarty.const._MD_PLAYERMAP_LANG_URL}></dt>
+  <dd><{xoops_input type=text name=url value=$actionForm->get('url') size=40 maxlength=255}></dd>
+  <dt><{$smarty.const._MD_PLAYERMAP_LANG_DESCRIPTION}></dt>
+  <dd><{xoops_dhtmltarea type=text name=description value=$actionForm->get('description') cols=80 editor=html}></dd>
+  <dt><{$smarty.const._MD_PLAYERMAP_LANG_IMAGE}></dt>
+  <dd>
+  	<{if $image}>
+  	<img src="<{$image->getFileUrl(1)}>" alt="<{$image->getShow('title')}>" />
+  	<{/if}>
+  	<{xoops_input type=file name=image1 size=30}>
+  </dd>
+
+    <dt></dt>
+    <dd>
+      <{xoops_token form=$actionForm}>
+      <{xoops_input type=hidden name=conv_id value=$actionForm->get('conv_id')}>
+      <input type="submit" value="<{$smarty.const._SUBMIT}>" />
+      <input type="submit" value="<{$smarty.const._CANCEL}>" name="_form_control_cancel" />
+    </dd>
+  </dl>
+</form>
+</div>

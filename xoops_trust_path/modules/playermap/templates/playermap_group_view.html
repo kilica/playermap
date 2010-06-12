@@ -1,0 +1,38 @@
+<div id="playermap">
+<h1><{$object->getShow('title')}></h1>
+
+<div id="tab" class="tab">
+	<ul>
+		<li><a href="#desc"><{$smarty.const._MD_PLAYERMAP_LANG_DESCRIPTION}></a></li>
+		<li><a href="#member"><{$smarty.const._MD_PLAYERMAP_LANG_MEMBER}> (<{$object->countChild('member')}>)</a></li>
+		<li><a href="#log"><{$smarty.const._MD_PLAYERMAP_LANG_LOG}> (<{$object->countChild('log')}>)</a></li>
+		<li><a href="#conv"><{$smarty.const._MD_PLAYERMAP_LANG_CONV}> (<{$object->countChild('conv')}>)</a></li>
+	</ul>
+
+	<div id="desc">
+		<dl class="viewDetail">
+		  <dt><{$smarty.const._MD_PLAYERMAP_LANG_URL}></dt>
+		  <dd><{$object->getShow('url')}></dd>
+		  <dt><{$smarty.const._MD_PLAYERMAP_LANG_DESCRIPTION}></dt>
+		  <dd><{$object->getShow('description')}></dd>
+		</dl>
+		<div class="clear"></div>
+  </div>
+
+	<div id="member">
+	<{playermap_list dirname=$object->getDirname() dataname=group data_id=$object->get('group_id') childname=member template=widelist}>
+	</div><!-- id:log -->
+
+	<div id="log">
+	<{playermap_list dirname=$object->getDirname() dataname=group data_id=$object->get('group_id') childname=log template=widelist}>
+	</div><!-- id:log -->
+
+	<div id="conv">
+	<{playermap_list dirname=$object->getDirname() dataname=group data_id=$object->get('group_id') childname=conv template=widelist}>
+	</div><!-- id:conv -->
+</div>
+
+<{playermap_iseditor dataname="group" data_id=$object->getShow('group_id')}>
+<{playermap_iseditor dataname="group" data_id=$object->getShow('conv_id') childname="member"}>
+
+</div>

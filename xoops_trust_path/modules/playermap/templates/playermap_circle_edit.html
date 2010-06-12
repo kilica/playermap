@@ -1,0 +1,61 @@
+<div id="playermap">
+<h1><{$smarty.const._MD_PLAYERMAP_LANG_CIRCLE_EDIT}></h1>
+<{if $actionForm->hasError()}>
+  <ul class="error">
+    <{foreach item=message from=$actionForm->getErrorMessages()}>
+      <li><{$message|xoops_escape}></li>
+    <{/foreach}>
+  </ul>
+<{/if}>
+<form action="<{xoops_cooluri dirname=$dirname dataname=circle action=edit}>" method="post">
+  <dl>
+
+  <{xoops_input type=hidden name=GROUP_ID value=$actionForm->get('group_id')}>
+  <dt><{$smarty.const._MD_PLAYERMAP_LANG_ADDRESS}></dt>
+  <dd><{xoops_textarea type=text name=address value=$actionForm->get('address')}></dd>
+  <dt><{$smarty.const._MD_PLAYERMAP_LANG_PREF_ID}></dt>
+  <dd><select name="pref_id">
+	<{legacy_category_select tree=$Pref_idTree selectedValue=$actionForm->get('pref_id')}>
+  </select></dd>
+  <dt><{$smarty.const._MD_PLAYERMAP_LANG_GRP}></dt>
+  <dd><iframe width="425" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://maps.google.co.jp/maps?q=google+map&amp;ll=<{$actionForm->get('grp_lat')}>,<{$actionForm->get('grp_lng')}>"></iframe>
+  <{xoops_input type=text name=grp_lat value=$actionForm->get('grp_lat') size=10}>
+  <{xoops_input type=text name=grp_lng value=$actionForm->get('grp_lng') size=10}>
+  </dd>
+
+  <dt><{$smarty.const._MD_PLAYERMAP_LANG_SUN}></dt>
+  <dd><{playermap_input class=offtime name=sun value=$actionForm->get('sun')}></dd>
+
+  <dt><{$smarty.const._MD_PLAYERMAP_LANG_MON}></dt>
+  <dd><{playermap_input class=offtime name=mon value=$actionForm->get('mon')}></dd>
+
+  <dt><{$smarty.const._MD_PLAYERMAP_LANG_TUE}></dt>
+  <dd><{playermap_input class=offtime name=tue value=$actionForm->get('tue')}></dd>
+
+  <dt><{$smarty.const._MD_PLAYERMAP_LANG_WED}></dt>
+  <dd><{playermap_input class=offtime name=wed value=$actionForm->get('wed')}></dd>
+
+  <dt><{$smarty.const._MD_PLAYERMAP_LANG_THU}></dt>
+  <dd><{playermap_input class=offtime name=thu value=$actionForm->get('thu')}></dd>
+
+  <dt><{$smarty.const._MD_PLAYERMAP_LANG_FRI}></dt>
+  <dd><{playermap_input class=offtime name=fri value=$actionForm->get('fri')}></dd>
+
+  <dt><{$smarty.const._MD_PLAYERMAP_LANG_SAT}></dt>
+  <dd><{playermap_input class=offtime name=sat value=$actionForm->get('sat')}></dd>
+
+  <dt><{$smarty.const._MD_PLAYERMAP_LANG_HOL}></dt>
+  <dd><{playermap_input class=offtime name=hol value=$actionForm->get('hol')}></dd>
+
+  <dt><{$smarty.const._MD_PLAYERMAP_LANG_PBN}></dt>
+  <dd><{playermap_input class=offtime name=pbn value=$actionForm->get('pbn')}></dd>
+    <dt></dt>
+    <dd>
+      <{xoops_token form=$actionForm}>
+      <{xoops_input type=hidden name=group_id value=$actionForm->get('group_id')}>
+      <input type="submit" value="<{$smarty.const._SUBMIT}>" />
+      <input type="submit" value="<{$smarty.const._CANCEL}>" name="_form_control_cancel" />
+    </dd>
+  </dl>
+</form>
+</div>

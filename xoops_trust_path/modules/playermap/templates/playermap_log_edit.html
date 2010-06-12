@@ -1,0 +1,58 @@
+<div id="playermap">
+<h1><{$smarty.const._MD_PLAYERMAP_LANG_LOG_EDIT}></h1>
+<{if $actionForm->hasError()}>
+  <ul class="error">
+    <{foreach item=message from=$actionForm->getErrorMessages()}>
+      <li><{$message|xoops_escape}></li>
+    <{/foreach}>
+  </ul>
+<{/if}>
+<form action="<{xoops_cooluri dirname=$dirname dataname=log action=edit}>" method="post">
+  <dl>
+  <dt class="required"><{$smarty.const._MD_PLAYERMAP_LANG_TITLE}></dt>
+  <dd><{xoops_input type=text name=title value=$actionForm->get('title') size=40 maxlength=255 class="required"}></dd>
+
+  <dt class="required"><{$smarty.const._MD_PLAYERMAP_LANG_RPG_ID}></dt>
+  <dd>
+  	<option value="0"></option>
+  	<{foreach item=rpg from=$myRpgs}>
+  		<label><input type="radio" name="rpg_id" value="<{$rpg->getShow('rpg_id')}>"<{if $rpg->get('rpg_id')==$actionForm->get('rpg_id')}> checked="checked"<{/if}>><{$rpg->getShow('title')}></label>
+  	<{/foreach}>
+  	<div id="rpgSelect"></div>
+	  <div><input type="text" id="incsearch" /></div>
+  </dd>
+
+  <dt><{$smarty.const._MD_PLAYERMAP_LANG_GROUP_ID}></dt>
+  <dd>
+	  <select name="group_id">
+		  <option value="0"></option>
+		  <{foreach item=group from=$myGroups.title key=g}>
+	  	<option value="<{$myGroups.group_id[$g]}>"<{if $myGroups.group_id[$g]==$actionForm->get('group_id')}> selected="selected"<{/if}>><{$group}></option>
+	  	<{/foreach}>
+	  </select>
+  </dd>
+
+  <dt><{$smarty.const._MD_PLAYERMAP_LANG_SESSIONTIME}></dt>
+  <dd><{xoops_input type=text name=sessiontime value=$actionForm->get('sessiontime') size=10 class=datePicker}></dd>
+  <dt><{$smarty.const._MD_PLAYERMAP_LANG_SCHEDULETIME}></dt>
+  <dd><{xoops_input type=text name=scheduletime value=$actionForm->get('scheduletime') size=10 class=datePicker}></dd>
+
+  <dt><{$smarty.const._MD_PLAYERMAP_LANG_RECRUIT}></dt>
+  <dd><{xoops_input type=text name=recruit value=$actionForm->get('recruit') size=10}></dd>
+
+  <dt><{$smarty.const._MD_PLAYERMAP_LANG_URL}></dt>
+  <dd><{xoops_input type=text name=url value=$actionForm->get('url') size=40 maxlength=255}></dd>
+  <dt><{$smarty.const._MD_PLAYERMAP_LANG_DESCRIPTION}></dt>
+  <dd><{xoops_dhtmltarea type=text name=description value=$actionForm->get('description') editor=html cols=70}></dd>
+
+    <dt></dt>
+    <dd>
+      <{xoops_token form=$actionForm}>
+      <{xoops_input type=hidden name=log_id value=$actionForm->get('log_id')}>
+			<{xoops_input type=hidden name=conv_id value=$actionForm->get('conv_id') size=10}>
+      <input type="submit" value="<{$smarty.const._SUBMIT}>" />
+      <input type="submit" value="<{$smarty.const._CANCEL}>" name="_form_control_cancel" />
+    </dd>
+  </dl>
+</form>
+</div>

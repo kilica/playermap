@@ -1,0 +1,61 @@
+<div id="playermap">
+<h1><{$object->getShow('name')}></h1>
+
+<ul class="subInfo">
+  <li><{$Pref_idTitle}></li>
+  <li><{$object->getShow('address')}></li>
+  <li><span class="title"><{$smarty.const._MD_PLAYERMAP_LANG_REGDATE}>:</span><{$object->getShow('posttime')|xoops_formattimestamp:s}></li>
+</ul>
+<div class="clear"></div>
+
+<{if $xoops_isuser}>
+<div class="like" id="conne-<{$object->getShow('uid')}>"><input type="radio" name="cstat" <{if $object->checkedAsConne()}>value="-1" checked="checked"<{else}>value="1"<{/if}> /></div>
+<{/if}>
+
+<{playermap_iseditor dataname="player" data_id=$object->getShow('uid')}>
+
+<div class="clear"></div>
+
+<div id="tab" class="tab">
+	<ul>
+		<li><a href="#desc"><{$smarty.const._MD_PLAYERMAP_LANG_DESCRIPTION}></a></li>
+		<li><a href="#review"><{$smarty.const._MD_PLAYERMAP_LANG_REVIEW}> (<{$object->countChild('review')}>)</a></li>
+		<li><a href="#group"><{$smarty.const._MD_PLAYERMAP_LANG_GROUP}> (<{$object->countChild('member')}>)</a></li>
+		<li><a href="#favrpg"><{$smarty.const._MD_PLAYERMAP_LANG_FAVRPG}> (<{$object->countChild('favrpg')}>)</a></li>
+		<li><a href="#log"><{$smarty.const._MD_PLAYERMAP_LANG_LOG}> (<{$object->countChild('entry')}>)</a></li>
+		<li><a href="#conne"><{$smarty.const._MD_PLAYERMAP_LANG_CONNE}> (<{$object->countChild('conne')}>)</a></li>
+	</ul>
+
+	<div id="desc">
+		<div class="viewDetail">
+		  <{$object->get('description')}>
+		</div>
+		<div id="link">
+			<{playermap_iseditor dataname="player" data_id=$object->getShow('uid') childname="link"}>
+			<{playermap_list dirname=$object->getDirname() dataname=player data_id=$object->get('uid') childname=link template=widelist}>
+		</div><!-- id:link -->
+	</div>
+
+	<div id="review">
+		<{playermap_list dirname=$object->getDirname() dataname=player data_id=$object->get('uid') childname=review template=widelist}>
+	</div><!-- id:review -->
+
+	<div id="group">
+		<{playermap_iseditor dataname="player" data_id=$object->getShow('uid') childname="group"}>
+		<{playermap_list dirname=$object->getDirname() dataname=player data_id=$object->get('uid') childname=member template=widelist}>
+	</div><!-- id:group -->
+
+	<div id="favrpg">
+	<{playermap_list dirname=$object->getDirname() dataname=player data_id=$object->get('uid') childname=favrpg template=widelist}>
+	</div><!-- id:favrpg -->
+
+	<div id="log">
+		<{playermap_list dirname=$object->getDirname() dataname=player data_id=$object->get('uid') childname=log template=widelist}>
+	</div><!-- id:log -->
+
+	<div id="conne">
+		<{playermap_list dirname=$object->getDirname() dataname=player data_id=$object->get('uid') childname=conne template=widelist}>
+	</div><!-- id:link -->
+</div>
+
+</div>

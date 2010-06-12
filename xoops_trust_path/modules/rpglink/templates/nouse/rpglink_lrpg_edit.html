@@ -1,0 +1,30 @@
+<div id="rpglink">
+<h1><{$smarty.const._MD_RPGLINK_LANG_LRPG_EDIT}></h1>
+<{if $actionForm->hasError()}>
+  <ul class="error">
+    <{foreach item=message from=$actionForm->getErrorMessages()}>
+      <li><{$message|xoops_escape}></li>
+    <{/foreach}>
+  </ul>
+<{/if}>
+<form action="index.php?action=LrpgEdit" method="post">
+  <dl>
+
+  <{xoops_input type=hidden name=LRPG_ID value=$actionForm->get('lrpg_id')}>
+
+  <dt><{$smarty.const._MD_RPGLINK_LANG_RPG_ID}></dt>
+  <dd><{xoops_input type=text name=rpg_id value=$actionForm->get('rpg_id') size=10}></dd>
+
+  <dt><{$smarty.const._MD_RPGLINK_LANG_LINK_ID}></dt>
+  <dd><{xoops_input type=text name=link_id value=$actionForm->get('link_id') size=10}></dd>
+
+    <dt></dt>
+    <dd>
+      <{xoops_token form=$actionForm}>
+      <{xoops_input type=hidden name=lrpg_id value=$actionForm->get('lrpg_id')}>
+      <input type="submit" value="<{$smarty.const._SUBMIT}>" />
+      <input type="submit" value="<{$smarty.const._CANCEL}>" name="_form_control_cancel" />
+    </dd>
+  </dl>
+</form>
+</div>

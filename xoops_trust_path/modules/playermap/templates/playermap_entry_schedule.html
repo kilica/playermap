@@ -1,0 +1,39 @@
+<div id="playermap">
+<h1><{$smarty.const._MD_PLAYERMAP_LANG_ENTRY_EDIT}></h1>
+<{if $actionForm->hasError()}>
+  <ul class="error">
+    <{foreach item=message from=$actionForm->getErrorMessages()}>
+      <li><{$message|xoops_escape}></li>
+    <{/foreach}>
+  </ul>
+<{/if}>
+<form action="index.php?action=EntryEdit" method="post">
+  <div style="width:600px;">
+	<{foreach item=cal from=$calendar key=day}>
+		<ul style="width:50px;display:block;float:left;">
+		<li><{"m/d"|date:$cal}></li>
+		<{foreach item=entry from=$object->mLog->mEntry}>
+			<{if $entry->get('uid')!=$xoops_userid}>
+			<li><{$entry->mSche.$cal}></li>
+			<{/if}>
+		<{/foreach}>
+		<li><{playermap_input class=sche name=sche[$cal] value=$object->mSche.$cal}></li>
+		</ul>
+	<{/foreach}>
+	
+  <dl>
+  <dt><{$smarty.const._MD_PLAYERMAP_LANG_ROLE}></dt>
+  <dd><{playermap_input class=role name=role value=$actionForm->get('role')}></dd>
+  <dt><{$smarty.const._MD_PLAYERMAP_LANG_COMMENT}></dt>
+  <dd><{xoops_textarea type=text name=description value=$actionForm->get('comment')}></dd>
+    <dt></dt>
+    <dd>
+      <{xoops_token form=$actionForm}>
+      <{xoops_input type=hidden name=entry_id value=$actionForm->get('entry_id')}>
+      <{xoops_input type=hidden name=log_id value=$actionForm->get('log_id')}>
+      <input type="submit" value="<{$smarty.const._SUBMIT}>" />
+      <input type="submit" value="<{$smarty.const._CANCEL}>" name="_form_control_cancel" />
+    </dd>
+  </dl>
+</form>
+</div>

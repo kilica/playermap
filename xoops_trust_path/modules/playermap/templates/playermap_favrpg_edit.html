@@ -1,0 +1,40 @@
+<div id="playermap">
+<h1><{$smarty.const._MD_PLAYERMAP_LANG_FAVRPG_EDIT}></h1>
+<{if $actionForm->hasError()}>
+  <ul class="error">
+    <{foreach item=message from=$actionForm->getErrorMessages()}>
+      <li><{$message|xoops_escape}></li>
+    <{/foreach}>
+  </ul>
+<{/if}>
+<form action="<{xoops_cooluri dirname=$dirname dataname=favrpg action=edit}>" method="post">
+  <dl>
+
+  <{xoops_input type=hidden name=FAVRPG_ID value=$actionForm->get('favrpg_id')}>
+
+  <dt><{$smarty.const._MD_TRPG_LANG_RPG}></dt>
+  <dd><{if $actionForm->get('rpg_id')>0}><{$object->mRpg->get('title')}><{else}>  	<div id="rpgSelect"></div>
+	  <div><input type="text" id="incsearch" /></div><{/if}>
+	</dd>
+
+  <dt><{$smarty.const._MD_PLAYERMAP_LANG_RATING}></dt>
+  <dd><{playermap_input class=rating name=rating value=$actionForm->get('rating')}></dd>
+
+  <dt><{$smarty.const._MD_PLAYERMAP_LANG_PLAYER}></dt>
+  <dd><{playermap_input class=exp name=player value=$actionForm->get('player')}></dd>
+
+  <dt><{$smarty.const._MD_PLAYERMAP_LANG_MASTER}></dt>
+  <dd><{playermap_input class=exp name=master value=$actionForm->get('master')}></dd>
+  <dt><{$smarty.const._MD_PLAYERMAP_LANG_DESCRIPTION}></dt>
+  <dd><{xoops_dhtmltarea type=text name=description value=$actionForm->get('description') editor=html}></dd>
+
+    <dt></dt>
+    <dd>
+      <{xoops_token form=$actionForm}>
+      <{xoops_input type=hidden name=favrpg_id value=$actionForm->get('favrpg_id')}>
+      <input type="submit" value="<{$smarty.const._SUBMIT}>" />
+      <input type="submit" value="<{$smarty.const._CANCEL}>" name="_form_control_cancel" />
+    </dd>
+  </dl>
+</form>
+</div>
